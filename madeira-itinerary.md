@@ -5,7 +5,8 @@
 ## 6 decembrie — Sosire
 - București 05:55 → Frankfurt 07:30.
 - Frankfurt 11:05 → Funchal 14:20.
-- 15:30 preluare mașina 1 — Madeira Airport (Funchal).
+- Shuttle Centauro: din terminal la dreapta, ~50 m pe alee până la „Go to coffee & Food”; shuttle la 10–15 min.
+- 15:30 preluare mașina 1 — Centauro Rent a Car, biroul „Madeira Airport” (Gaula, Santa Cruz).
 - Transfer la cazare; cumpărături.
 
 ## 7 decembrie — Două variante (de ales)
@@ -16,8 +17,8 @@
 - 07:00 plecare de la cazare → 08:00 start PR8.
 - PR8 Ponta de São Lourenço, aproximativ 4–5 ore. Notă Excel: bilet 4,5 EUR/persoană.
 - Masă.
-- 14:30 predare mașina 1 — Madeira Airport (Funchal).
-- 15:30 preluare mașina 2 — Madeira Airport (Funchal) (în Excel: „Ridicat 2 mașini”).
+- 14:30 predare mașina 1 — biroul Centauro (Gaula).
+- 15:30 preluare mașina 2 — același birou Centauro (în Excel: „Ridicat 2 mașini”).
 - PR23 Levada da Azenha, aproximativ 1 oră; în Excel apare „gratuit”.
 - „Miradouro?” — oprire nealeasă.
 
@@ -63,6 +64,7 @@
 
 ## Actualizare 22 noiembrie 2026 — mașini
 - Confirmat de utilizator: mașina 1 se preia pe 6.12.2026 la 15:30 și se predă pe 8.12.2026 la 14:30, la Madeira Airport (Funchal). Mașina 2 se preia pe 8.12.2026 la 15:30, din aceeași locație.
+- Firma: Centauro Rent a Car; biroul „Madeira Airport” e în afara aeroportului, coordonate 32.6665513, -16.8034045 (link Google Maps de la utilizator). De la terminal se ajunge cu shuttle-ul Centauro.
 - Această informație înlocuiește neclaritatea „ridicare mașini” 6 vs. 8 decembrie din Excel.
 
 ## Idei suplimentare din coloanele laterale ale foii

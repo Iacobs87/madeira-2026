@@ -23,6 +23,8 @@ export const TRIP = {
  */
 export const places: Place[] = [
   { id: "airport", name: "Aeroportul Madeira (Funchal)", lat: 32.6989623, lng: -16.7730306 },
+  // Din linkul Google Maps trimis de utilizator (biroul „Madeira Airport” al Centauro, în afara aeroportului).
+  { id: "centauro", name: "Centauro Rent a Car Madeira", lat: 32.6665513, lng: -16.8034045 },
   { id: "fanal", name: "Fanal", lat: 32.809398, lng: -17.1407318, approx: "zona Fanal (Porto Moniz)" },
   { id: "azenha", name: "Levada da Azenha", lat: 32.6565065, lng: -16.8432934 },
   { id: "anjos", name: "Anjos (Cascata dos Anjos)", lat: 32.6866676, lng: -17.1138147, approx: "localitatea Anjos, Ponta do Sol" },
@@ -73,13 +75,28 @@ export const days: Day[] = [
         placeIds: ["airport"],
       },
       {
-        id: "d06-masina1",
-        title: "Preluare mașina 1 — Madeira Airport (Funchal)",
+        id: "d06-shuttle",
+        title: "Shuttle Centauro de la terminal",
         category: "transport",
-        startTime: "15:30",
-        notes: ["Se predă pe 8 decembrie la 14:30, în același loc."],
+        notes: [
+          "După ce luați bagajele, ieșiți din terminal și o luați la dreapta.",
+          "Mergeți pe alee cam 50 m: pe dreapta e „Go to coffee & Food”.",
+          "Acolo așteptați shuttle-ul Centauro Rent a Car, care vine la 10–15 minute.",
+        ],
         mapsQuery: "Aeroporto da Madeira",
         placeIds: ["airport"],
+      },
+      {
+        id: "d06-masina1",
+        title: "Preluare mașina 1 — Centauro Rent a Car",
+        category: "transport",
+        startTime: "15:30",
+        notes: [
+          "Biroul Centauro „Madeira Airport” e în afara aeroportului (Gaula, Santa Cruz), cam 4,6 km în linie dreaptă de terminal.",
+          "Se predă pe 8 decembrie la 14:30, în același loc.",
+        ],
+        mapsQuery: "Centauro Rent a Car Madeira",
+        placeIds: ["centauro"],
       },
       { id: "d06-cazare", title: "Transfer la cazare", category: "transport" },
       { id: "d06-cumparaturi", title: "Cumpărături", category: "activitate" },
@@ -136,21 +153,21 @@ export const days: Day[] = [
       { id: "d08-masa", title: "Masă", category: "masa" },
       {
         id: "d08-predare1",
-        title: "Predare mașina 1 — Madeira Airport (Funchal)",
+        title: "Predare mașina 1 — Centauro Rent a Car",
         category: "transport",
         startTime: "14:30",
-        notes: ["Preluată pe 6 decembrie la 15:30."],
-        mapsQuery: "Aeroporto da Madeira",
-        placeIds: ["airport"],
+        notes: ["La biroul Centauro din Gaula (Santa Cruz), nu la terminal. Preluată pe 6 decembrie la 15:30."],
+        mapsQuery: "Centauro Rent a Car Madeira",
+        placeIds: ["centauro"],
       },
       {
         id: "d08-masina2",
-        title: "Preluare mașina 2 — Madeira Airport (Funchal)",
+        title: "Preluare mașina 2 — Centauro Rent a Car",
         category: "transport",
         startTime: "15:30",
-        notes: ["În Excel apare ca „Ridicat 2 mașini” la 15:30."],
-        mapsQuery: "Aeroporto da Madeira",
-        placeIds: ["airport"],
+        notes: ["Același birou Centauro, la o oră după predarea mașinii 1.", "În Excel apare ca „Ridicat 2 mașini” la 15:30."],
+        mapsQuery: "Centauro Rent a Car Madeira",
+        placeIds: ["centauro"],
       },
       {
         id: "d08-pr23",
@@ -457,7 +474,7 @@ export const generalChecks: VerifyItem[] = [
   {
     id: "g-masini",
     label: "Predarea mașinii 2",
-    detail: "Mașina 1: 6 dec. 15:30 → 8 dec. 14:30, mașina 2: din 8 dec. 15:30, ambele la Madeira Airport. Rămâne de stabilit ora și locul predării mașinii 2 pe 17 decembrie.",
+    detail: "Mașina 1: 6 dec. 15:30 → 8 dec. 14:30, mașina 2: din 8 dec. 15:30, ambele la biroul Centauro „Madeira Airport” (Gaula). Rămâne de stabilit ora și locul predării mașinii 2 pe 17 decembrie.",
     date: "2026-12-17",
   },
   {
