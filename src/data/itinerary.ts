@@ -52,7 +52,7 @@ export const days: Day[] = [
     date: "2026-12-06",
     title: "Sosire",
     kind: "sosire",
-    summary: "Zborurile spre Funchal, mașinile, cazarea și cumpărăturile.",
+    summary: "Zborurile spre Funchal, prima mașină, cazarea și cumpărăturile.",
     items: [
       {
         id: "d06-zbor1",
@@ -73,10 +73,13 @@ export const days: Day[] = [
         placeIds: ["airport"],
       },
       {
-        id: "d06-masini",
-        title: "Ridicare mașini",
+        id: "d06-masina1",
+        title: "Preluare mașina 1 — Madeira Airport (Funchal)",
         category: "transport",
-        needsVerification: "Ridicarea mașinilor apare și pe 8 decembrie (15:30, „Ridicat 2 mașini”). Clarificați câte mașini se ridică și când.",
+        startTime: "15:30",
+        notes: ["Se predă pe 8 decembrie la 14:30, în același loc."],
+        mapsQuery: "Aeroporto da Madeira",
+        placeIds: ["airport"],
       },
       { id: "d06-cazare", title: "Transfer la cazare", category: "transport" },
       { id: "d06-cumparaturi", title: "Cumpărături", category: "activitate" },
@@ -117,7 +120,7 @@ export const days: Day[] = [
     date: "2026-12-08",
     title: "Ponta de São Lourenço",
     kind: "normal",
-    summary: "Capătul estic al insulei, apoi o levada scurtă.",
+    summary: "Capătul estic al insulei, schimbul mașinii la aeroport, apoi o levada scurtă.",
     items: [
       { id: "d08-plecare", title: "Plecare de la cazare", category: "transport", startTime: "07:00" },
       {
@@ -132,11 +135,22 @@ export const days: Day[] = [
       },
       { id: "d08-masa", title: "Masă", category: "masa" },
       {
-        id: "d08-masini",
-        title: "„Ridicat 2 mașini”",
+        id: "d08-predare1",
+        title: "Predare mașina 1 — Madeira Airport (Funchal)",
+        category: "transport",
+        startTime: "14:30",
+        notes: ["Preluată pe 6 decembrie la 15:30."],
+        mapsQuery: "Aeroporto da Madeira",
+        placeIds: ["airport"],
+      },
+      {
+        id: "d08-masina2",
+        title: "Preluare mașina 2 — Madeira Airport (Funchal)",
         category: "transport",
         startTime: "15:30",
-        needsVerification: "Așa apare în Excel. De clarificat față de ridicarea mașinilor din 6 decembrie.",
+        notes: ["În Excel apare ca „Ridicat 2 mașini” la 15:30."],
+        mapsQuery: "Aeroporto da Madeira",
+        placeIds: ["airport"],
       },
       {
         id: "d08-pr23",
@@ -372,7 +386,7 @@ export const days: Day[] = [
     date: "2026-12-17",
     title: "Valley of the Nuns și plecare",
     kind: "plecare",
-    summary: "Curral das Freiras, predarea mașinilor, zborurile spre casă.",
+    summary: "Curral das Freiras, predarea mașinii 2, zborurile spre casă.",
     items: [
       {
         id: "d17-curral",
@@ -381,7 +395,12 @@ export const days: Day[] = [
         mapsQuery: "Curral das Freiras Madeira",
         placeIds: ["curral"],
       },
-      { id: "d17-masini", title: "Returnare mașini", category: "transport" },
+      {
+        id: "d17-predare2",
+        title: "Predare mașina 2",
+        category: "transport",
+        needsVerification: "Ora și locul predării mașinii 2 nu sunt încă stabilite.",
+      },
       {
         id: "d17-zboruri",
         title: "Zboruri retur — de confirmat",
@@ -437,9 +456,9 @@ export const generalChecks: VerifyItem[] = [
   },
   {
     id: "g-masini",
-    label: "Mașinile",
-    detail: "Ridicare pe 6 decembrie și „Ridicat 2 mașini” pe 8 decembrie la 15:30. Returnare pe 17 decembrie.",
-    date: "2026-12-06",
+    label: "Predarea mașinii 2",
+    detail: "Mașina 1: 6 dec. 15:30 → 8 dec. 14:30, mașina 2: din 8 dec. 15:30, ambele la Madeira Airport. Rămâne de stabilit ora și locul predării mașinii 2 pe 17 decembrie.",
+    date: "2026-12-17",
   },
   {
     id: "g-zbor-retur",

@@ -29,7 +29,7 @@ Date structurate în `src/data/itinerary.ts` sau JSON, cu `date`, `title`, `item
 - 10 decembrie: zi fără plan definit.
 - 16 decembrie: zi tampon.
 - 17 decembrie: segmentele aeriene sunt ambigue în Excel; afișează „de confirmat”, fără ore sau legături atribuite arbitrar.
-- 6 și 8 decembrie: ambele menționează ridicarea mașinilor; marchează pentru clarificare.
+- Mașini (clarificat 22.11.2026): mașina 1 preluată 6 dec. 15:30, predată 8 dec. 14:30; mașina 2 preluată 8 dec. 15:30 — toate la Madeira Airport. Predarea mașinii 2 pe 17 dec. rămâne de stabilit.
 - Prețurile 4,5 EUR sunt note din Excel, nu tarife actuale garantate.
 - Nu pretinde că biletele sau activitățile sunt rezervate.
 

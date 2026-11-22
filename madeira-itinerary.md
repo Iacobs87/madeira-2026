@@ -5,7 +5,8 @@
 ## 6 decembrie — Sosire
 - București 05:55 → Frankfurt 07:30.
 - Frankfurt 11:05 → Funchal 14:20.
-- Ridicare mașini; transfer la cazare; cumpărături.
+- 15:30 preluare mașina 1 — Madeira Airport (Funchal).
+- Transfer la cazare; cumpărături.
 
 ## 7 decembrie — Două variante (de ales)
 - **Varianta A:** PR13 Vereda do Fanal, 6–8 ore, plus plimbare prin Fanal. Notă Excel: bilet 4,5 EUR/persoană.
@@ -15,7 +16,8 @@
 - 07:00 plecare de la cazare → 08:00 start PR8.
 - PR8 Ponta de São Lourenço, aproximativ 4–5 ore. Notă Excel: bilet 4,5 EUR/persoană.
 - Masă.
-- 15:30: „Ridicat 2 mașini” (așa apare în Excel; de clarificat în raport cu ridicarea mașinilor din 6 decembrie).
+- 14:30 predare mașina 1 — Madeira Airport (Funchal).
+- 15:30 preluare mașina 2 — Madeira Airport (Funchal) (în Excel: „Ridicat 2 mașini”).
 - PR23 Levada da Azenha, aproximativ 1 oră; în Excel apare „gratuit”.
 - „Miradouro?” — oprire nealeasă.
 
@@ -56,8 +58,12 @@
 
 ## 17 decembrie — Valley of the Nuns și plecare
 - Valley of the Nuns (Curral das Freiras).
-- Returnare mașini.
+- Predare mașina 2 (ora și locul nu sunt încă stabilite).
 - **Zboruri — transcriere brută, ordinea celulelor din Excel este ambiguă:** rândul 71: „RETUR MASINI | 11:45 | ZURICH | 16:50”; rândul 72: „FUNCHAL | 21:55 | BUCURESTI | 01:15”; rândul 73: „ZURICH”. **Nu afișa un itinerar aerian cert** până la confirmarea segmentelor și a zilei de sosire.
+
+## Actualizare 22 noiembrie 2026 — mașini
+- Confirmat de utilizator: mașina 1 se preia pe 6.12.2026 la 15:30 și se predă pe 8.12.2026 la 14:30, la Madeira Airport (Funchal). Mașina 2 se preia pe 8.12.2026 la 15:30, din aceeași locație.
+- Această informație înlocuiește neclaritatea „ridicare mașini” 6 vs. 8 decembrie din Excel.
 
 ## Idei suplimentare din coloanele laterale ale foii
 - Viewpoint: Miradouro do Cristo Rei.
