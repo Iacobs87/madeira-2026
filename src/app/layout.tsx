@@ -43,8 +43,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <footer className="no-print mx-auto max-w-6xl px-4 pb-10 text-xs text-stone-500 sm:px-6">
-          Planul vine din Excelul excursiei. Nimic de aici nu e o rezervare confirmată, iar starea traseelor și prețurile se verifică
-          pe site-urile oficiale înainte de plecare.
+          Planul vine din Excelul excursiei. Zborurile sunt confirmate; restul activităților nu sunt marcate ca rezervate. Starea traseelor
+          și prețurile se verifică pe site-urile oficiale înainte de plecare.
         </footer>
         <ServiceWorkerRegister basePath={basePath} />
       </body>

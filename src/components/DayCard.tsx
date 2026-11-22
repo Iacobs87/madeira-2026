@@ -22,7 +22,7 @@ export function DayCard({ day, highlight }: { day: Day; highlight?: Category | n
       <h3 className="mt-1 font-display text-lg font-semibold leading-snug text-ocean-900 group-hover:text-ocean-700">{day.title}</h3>
 
       {day.items.length === 0 ? (
-        <p className="mt-2 text-sm italic text-stone-500">Nicio activitate în Excel.</p>
+        <p className="mt-2 text-sm italic text-stone-500">{day.summary ?? "Nicio activitate în Excel."}</p>
       ) : (
         <ul className="mt-2 space-y-1 text-sm">
           {day.items.map((i) => {

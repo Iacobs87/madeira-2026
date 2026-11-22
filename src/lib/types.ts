@@ -29,6 +29,32 @@ export interface Item {
   mapsQuery?: string;
   /** Ids of geocoded places (see `places`). */
   placeIds?: string[];
+  /** Id of a flight in `flights`: the timeline shows its details and status links. */
+  flightId?: string;
+}
+
+export interface Airport {
+  code: string;
+  city: string;
+  /** Fixed UTC offset in December (no DST change during the trip). */
+  utcOffset: number;
+}
+
+export interface Flight {
+  id: string;
+  number: string;
+  airline: string;
+  operatedBy?: string;
+  from: Airport;
+  to: Airport;
+  /** Local times, "YYYY-MM-DDTHH:MM". */
+  departure: string;
+  arrival: string;
+  cabin: string;
+  status: "Confirmat";
+  direction: "dus" | "intors";
+  /** ICAO designator for FlightAware, only when it resolves there. */
+  flightAware?: string;
 }
 
 export type DayKind = "normal" | "alternative" | "liber" | "tampon" | "sosire" | "plecare";

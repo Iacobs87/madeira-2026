@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { generalChecks, optionals } from "@/data/itinerary";
-import { CATEGORY, dayNumber, days, formatDate, timeLabel, TRIP } from "@/lib/trip";
+import { CATEGORY, clock, dateOf, dayNumber, days, flightDuration, flights, formatDate, timeLabel, TRIP } from "@/lib/trip";
 import { PrintButton } from "./PrintButton";
 
 export const metadata: Metadata = { title: "Itinerar printabil" };
@@ -18,6 +18,30 @@ export default function Print() {
         {days.length} zile · orele sunt {TRIP.timezoneLabel} · sursa: {TRIP.source}
       </p>
 
+      <h2 className="mt-4 border-b pb-1 text-lg font-semibold">Zboruri (confirmate)</h2>
+      <table className="mt-1 w-full">
+        <tbody>
+          {flights.map((f) => (
+            <tr key={f.id} className="border-b border-stone-100 align-top">
+              <td className="py-1 pr-2 whitespace-nowrap">{formatDate(dateOf(f.departure), true)}</td>
+              <td className="py-1 pr-2 font-medium">{f.number}</td>
+              <td className="py-1 pr-2">
+                {f.from.city} ({f.from.code}) → {f.to.city} ({f.to.code})
+                <span className="block text-stone-500">
+                  {f.airline}
+                  {f.operatedBy && `, operat de ${f.operatedBy}`} · {f.cabin}
+                </span>
+              </td>
+              <td className="py-1 whitespace-nowrap tabular-nums">
+                {clock(f.departure)} → {clock(f.arrival)}
+                {dateOf(f.arrival) !== dateOf(f.departure) && " (+1)"} · {flightDuration(f)}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <h2 className="mt-4 border-b pb-1 text-lg font-semibold">Program</h2>
       {days.map((d) => (
         <section key={d.date} className="print-break border-b border-stone-200 py-2">
           <h2 className="font-semibold">

@@ -26,9 +26,9 @@ Date structurate în `src/data/itinerary.ts` sau JSON, cu `date`, `title`, `item
 
 ## Reguli de fidelitate
 - 7 decembrie: cele două drumeții sunt **alternative**, nu ambele obligatorii.
-- 10 decembrie: zi fără plan definit.
+- 10 decembrie: ziua lui Matei; Matei decide programul (fără activități predefinite).
 - 16 decembrie: zi tampon.
-- 17 decembrie: segmentele aeriene sunt ambigue în Excel; afișează „de confirmat”, fără ore sau legături atribuite arbitrar.
+- Zboruri (confirmate 22.11.2026): LH1423 + LH4410 pe 6 dec. via Frankfurt; LX8265 + LX1886 pe 17 dec. via Zürich, sosire OTP 18 dec. 01:15. Vezi `madeira-itinerary.md`.
 - Mașini (clarificat 22.11.2026): mașina 1 preluată 6 dec. 15:30, predată 8 dec. 14:30; mașina 2 preluată 8 dec. 15:30 — toate la Madeira Airport. Predarea mașinii 2 pe 17 dec. rămâne de stabilit.
 - Prețurile 4,5 EUR sunt note din Excel, nu tarife actuale garantate.
 - Nu pretinde că biletele sau activitățile sunt rezervate.

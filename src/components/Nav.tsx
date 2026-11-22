@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 export const NAV_ITEMS = [
   { href: "/", label: "Acasă", icon: "🏠" },
   { href: "/itinerar/", label: "Itinerar", icon: "📅" },
+  { href: "/zboruri/", label: "Zboruri", icon: "✈️" },
   { href: "/harta/", label: "Hartă", icon: "🗺️" },
   { href: "/optionale/", label: "Opționale", icon: "💡" },
   { href: "/de-verificat/", label: "De verificat", icon: "⚠️" },

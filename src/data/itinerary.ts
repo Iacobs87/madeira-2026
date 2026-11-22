@@ -5,7 +5,68 @@
  * Reguli: ordinea activităților e cea din Excel; orele apar doar unde există în sursă;
  * nimic nu e marcat ca rezervat; prețurile sunt notițe din Excel, nu tarife actuale.
  */
-import type { Day, OptionalIdea, Place, VerifyItem } from "@/lib/types";
+import type { Airport, Day, Flight, OptionalIdea, Place, VerifyItem } from "@/lib/types";
+
+const OTP: Airport = { code: "OTP", city: "București", utcOffset: 2 };
+const FRA: Airport = { code: "FRA", city: "Frankfurt", utcOffset: 1 };
+const FNC: Airport = { code: "FNC", city: "Funchal", utcOffset: 0 };
+const ZRH: Airport = { code: "ZRH", city: "Zürich", utcOffset: 1 };
+
+/** Confirmate de utilizator (22.11.2026). Toate orele sunt locale. */
+export const flights: Flight[] = [
+  {
+    id: "lh1423",
+    number: "LH1423",
+    airline: "Lufthansa",
+    from: OTP,
+    to: FRA,
+    departure: "2026-12-06T05:55",
+    arrival: "2026-12-06T07:30",
+    cabin: "Economy (S)",
+    status: "Confirmat",
+    direction: "dus",
+    flightAware: "DLH1423",
+  },
+  {
+    id: "lh4410",
+    number: "LH4410",
+    airline: "Lufthansa",
+    operatedBy: "Discover Airlines",
+    from: FRA,
+    to: FNC,
+    departure: "2026-12-06T11:05",
+    arrival: "2026-12-06T14:20",
+    cabin: "Economy Classic (S)",
+    status: "Confirmat",
+    direction: "dus",
+  },
+  {
+    id: "lx8265",
+    number: "LX8265",
+    airline: "SWISS",
+    operatedBy: "Edelweiss Air",
+    from: FNC,
+    to: ZRH,
+    departure: "2026-12-17T11:45",
+    arrival: "2026-12-17T16:50",
+    cabin: "Economy Classic (S)",
+    status: "Confirmat",
+    direction: "intors",
+  },
+  {
+    id: "lx1886",
+    number: "LX1886",
+    airline: "SWISS",
+    from: ZRH,
+    to: OTP,
+    departure: "2026-12-17T21:55",
+    arrival: "2026-12-18T01:15",
+    cabin: "Economy (S)",
+    status: "Confirmat",
+    direction: "intors",
+    flightAware: "SWR1886",
+  },
+];
 
 export const TRIP = {
   title: "Madeira",
@@ -58,21 +119,24 @@ export const days: Day[] = [
     items: [
       {
         id: "d06-zbor1",
-        title: "Zbor București → Frankfurt",
+        title: "Zbor LH1423 București → Frankfurt",
         category: "transport",
         startTime: "05:55",
         endTime: "07:30",
-        notes: ["Orele sunt cele din Excel. Pe bilet, fiecare oră e de obicei ora locală a aeroportului."],
+        notes: ["Ora României la plecare, ora Germaniei la sosire. Escală la Frankfurt: 3 h 35 min."],
         mapsQuery: "Aeroportul Henri Coandă București",
+        flightId: "lh1423",
       },
       {
         id: "d06-zbor2",
-        title: "Zbor Frankfurt → Funchal",
+        title: "Zbor LH4410 Frankfurt → Funchal",
         category: "transport",
         startTime: "11:05",
         endTime: "14:20",
+        notes: ["Ora Germaniei la plecare, ora Madeirei la sosire."],
         mapsQuery: "Aeroporto da Madeira",
         placeIds: ["airport"],
+        flightId: "lh4410",
       },
       {
         id: "d06-shuttle",
@@ -237,10 +301,11 @@ export const days: Day[] = [
   },
   {
     date: "2026-12-10",
-    title: "Zi necompletată",
+    title: "Ziua lui Matei 🎂",
     kind: "liber",
     flexible: true,
-    summary: "Nu există activități în Excel.",
+    summary: "E ziua lui Matei, așa că Matei decide programul.",
+    notes: ["La mulți ani, Matei! Programul zilei se alege pe loc."],
     items: [],
   },
   {
@@ -403,7 +468,10 @@ export const days: Day[] = [
     date: "2026-12-17",
     title: "Valley of the Nuns și plecare",
     kind: "plecare",
-    summary: "Curral das Freiras, predarea mașinii 2, zborurile spre casă.",
+    summary: "Curral das Freiras, predarea mașinii 2, zborurile spre casă (via Zürich).",
+    notes: [
+      "Zborul spre Zürich pleacă la 11:45. Curral das Freiras și predarea mașinii trebuie să încapă dimineața devreme, înainte de aeroport. Altfel, Curral das Freiras se poate muta pe 16 decembrie (zi tampon).",
+    ],
     items: [
       {
         id: "d17-curral",
@@ -416,21 +484,28 @@ export const days: Day[] = [
         id: "d17-predare2",
         title: "Predare mașina 2",
         category: "transport",
-        needsVerification: "Ora și locul predării mașinii 2 nu sunt încă stabilite.",
+        needsVerification: "Ora și locul predării mașinii 2 nu sunt încă stabilite. Trebuie să fie înainte de zborul de la 11:45.",
       },
       {
-        id: "d17-zboruri",
-        title: "Zboruri retur — de confirmat",
+        id: "d17-zbor3",
+        title: "Zbor LX8265 Funchal → Zürich",
         category: "transport",
-        notes: [
-          "Transcriere brută din Excel, ordinea celulelor e ambiguă:",
-          "rândul 71: „RETUR MASINI | 11:45 | ZURICH | 16:50”",
-          "rândul 72: „FUNCHAL | 21:55 | BUCURESTI | 01:15”",
-          "rândul 73: „ZURICH”",
-        ],
-        needsVerification: "Segmentele, orele, escala și ziua sosirii trebuie confirmate pe bilete.",
+        startTime: "11:45",
+        endTime: "16:50",
+        notes: ["Ora Madeirei la plecare, ora Elveției la sosire. Escală la Zürich: 5 h 05 min."],
         mapsQuery: "Aeroporto da Madeira",
         placeIds: ["airport"],
+        flightId: "lx8265",
+      },
+      {
+        id: "d17-zbor4",
+        title: "Zbor LX1886 Zürich → București",
+        category: "transport",
+        startTime: "21:55",
+        endTime: "01:15 (+1)",
+        notes: ["Sosire la București pe 18 decembrie la 01:15, ora României."],
+        mapsQuery: "Zurich Airport",
+        flightId: "lx1886",
       },
     ],
   },
@@ -469,18 +544,12 @@ export const generalChecks: VerifyItem[] = [
   {
     id: "g-rezervari",
     label: "Rezervări și bilete",
-    detail: "Nimic din acest site nu e rezervat: zboruri, mașini, cazare, catamaran, Monte Palace, telecabină, tobogan.",
+    detail: "Zborurile sunt confirmate și mașinile Centauro au ore stabilite. Restul nu e marcat ca rezervat: cazare, catamaran, Monte Palace, telecabină, tobogan.",
   },
   {
     id: "g-masini",
     label: "Predarea mașinii 2",
     detail: "Mașina 1: 6 dec. 15:30 → 8 dec. 14:30, mașina 2: din 8 dec. 15:30, ambele la biroul Centauro „Madeira Airport” (Gaula). Rămâne de stabilit ora și locul predării mașinii 2 pe 17 decembrie.",
-    date: "2026-12-17",
-  },
-  {
-    id: "g-zbor-retur",
-    label: "Programul zborului de retur",
-    detail: "Excelul are rândurile Funchal / Zurich / București amestecate. Nu există un itinerar aerian cert.",
     date: "2026-12-17",
   },
   {

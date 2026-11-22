@@ -27,8 +27,8 @@
 - Funchal: Monte Palace, telecabină, coborâre cu toboganul tradițional, piața de fructe.
 - Catamaran pentru observarea balenelor: 14:30, durată 3 ore (planificat, nu confirmat ca rezervare).
 
-## 10 decembrie — Zi necompletată
-- Nu există activități în Excel.
+## 10 decembrie — Ziua lui Matei
+- Nu există activități în Excel. E ziua lui Matei, iar Matei decide programul (actualizare 22.11.2026).
 
 ## 11 decembrie — Caminho da Entarosa și Levada do Rei
 - 07:00 plecare de la cazare → 08:00 Caminho da Entarosa.
@@ -66,6 +66,14 @@
 - Confirmat de utilizator: mașina 1 se preia pe 6.12.2026 la 15:30 și se predă pe 8.12.2026 la 14:30, la Madeira Airport (Funchal). Mașina 2 se preia pe 8.12.2026 la 15:30, din aceeași locație.
 - Firma: Centauro Rent a Car; biroul „Madeira Airport” e în afara aeroportului, coordonate 32.6665513, -16.8034045 (link Google Maps de la utilizator). De la terminal se ajunge cu shuttle-ul Centauro.
 - Această informație înlocuiește neclaritatea „ridicare mașini” 6 vs. 8 decembrie din Excel.
+
+## Zboruri — confirmate (actualizare 22 noiembrie 2026)
+Toate orele sunt locale. Toate zborurile sunt confirmate.
+- 6 dec.: LH1423 București OTP 05:55 → Frankfurt FRA 07:30, Lufthansa, Economy (S). Escală Frankfurt 3 h 35 min.
+- 6 dec.: LH4410 Frankfurt FRA 11:05 → Funchal FNC 14:20, operat de Discover Airlines, Economy Classic (S).
+- 17 dec.: LX8265 Funchal FNC 11:45 → Zürich ZRH 16:50, operat de Edelweiss Air, Economy Classic (S). Escală Zürich 5 h 05 min.
+- 17 dec.: LX1886 Zürich ZRH 21:55 → București OTP 01:15 (18 dec.), SWISS, Economy (S).
+- Acestea înlocuiesc transcrierea ambiguă a zborurilor de retur din Excel.
 
 ## Idei suplimentare din coloanele laterale ale foii
 - Viewpoint: Miradouro do Cristo Rei.

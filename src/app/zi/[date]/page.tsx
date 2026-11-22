@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DayStrip } from "@/components/DayStrip";
+import { FlightStatusBadge, StatusLinks } from "@/components/FlightCard";
 import { CategoryBadge, ExtLink, MapsLink, Note, VerifyBadge } from "@/components/ui";
 import { officialLinks } from "@/data/itinerary";
-import { CATEGORY, dayHref, dayNumber, days, formatDate, KIND, placeById, timeLabel, TRIP } from "@/lib/trip";
+import { CATEGORY, dayHref, dayNumber, days, flightById, formatDate, KIND, placeById, timeLabel, TRIP } from "@/lib/trip";
 import type { Item } from "@/lib/types";
 
 export const dynamicParams = false;
@@ -104,7 +105,10 @@ export default async function DayPage({ params }: { params: Promise<{ date: stri
         </div>
       )}
 
-      <p className="mt-4 text-xs text-stone-500">Orele sunt {TRIP.timezoneLabel}, cum apar în Excel.</p>
+      <p className="mt-4 text-xs text-stone-500">
+        Orele sunt {TRIP.timezoneLabel}
+        {day.items.some((i) => i.flightId) && ", în afară de zboruri, unde fiecare oră e cea locală a aeroportului"}.
+      </p>
 
       <nav aria-label="Zile vecine" className="no-print mt-8 grid grid-cols-2 gap-3">
         {prev ? (
@@ -131,6 +135,7 @@ export default async function DayPage({ params }: { params: Promise<{ date: stri
 function TimelineItem({ item }: { item: Item }) {
   const t = timeLabel(item);
   const pinned = (item.placeIds ?? []).map(placeById).filter((p) => p !== undefined);
+  const flight = item.flightId ? flightById(item.flightId) : undefined;
   return (
     <article
       className={`rounded-2xl border bg-white p-4 shadow-sm ${item.alternative ? "border-flame-200" : "border-stone-200"}`}
@@ -142,6 +147,7 @@ function TimelineItem({ item }: { item: Item }) {
         )}
         {t && <span className="rounded-md bg-ocean-50 px-2 py-0.5 text-sm font-semibold tabular-nums text-ocean-800">{t}</span>}
         <CategoryBadge category={item.category} />
+        {flight && <FlightStatusBadge status={flight.status} />}
         {item.needsVerification && <VerifyBadge />}
       </div>
       <h2 className="mt-2 text-lg font-semibold text-basalt-900">{item.title}</h2>
@@ -169,6 +175,19 @@ function TimelineItem({ item }: { item: Item }) {
             <li key={n}>{n}</li>
           ))}
         </ul>
+      )}
+
+      {flight && (
+        <div className="mt-2 space-y-1">
+          <p className="text-sm text-stone-600">
+            {flight.airline}
+            {flight.operatedBy && ` · operat de ${flight.operatedBy}`} · {flight.cabin} ·{" "}
+            <Link href={`/zboruri/#${flight.id}`} className="text-ocean-700 underline underline-offset-2">
+              detalii zbor
+            </Link>
+          </p>
+          <StatusLinks flight={flight} />
+        </div>
       )}
 
       {item.needsVerification && (

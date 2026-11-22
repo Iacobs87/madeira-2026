@@ -43,10 +43,16 @@ export default function Home() {
       <SectionTitle>Pe scurt</SectionTitle>
       <Card>
         <ul className="grid gap-2 text-sm sm:grid-cols-2">
-          <li>✈️ Sosire pe 6 decembrie la Funchal (via Frankfurt), plecare pe 17 decembrie. Zborurile de retur sunt <strong>de confirmat</strong>.</li>
+          <li>
+            ✈️ Dus pe 6 decembrie via Frankfurt (LH1423 + LH4410), întors pe 17 decembrie via Zürich (LX8265 + LX1886). Toate zborurile sunt{" "}
+            <strong>confirmate</strong>.{" "}
+            <Link href="/zboruri/" className="text-ocean-700 underline underline-offset-2">
+              Detalii și status
+            </Link>
+          </li>
           <li>🥾 Levade și trasee PR în fiecare colț al insulei: Fanal, Ponta de São Lourenço, Levada do Rei, PR1, Caldeirão Verde, PR6.</li>
           <li>🏘️ O zi în Funchal (Monte, telecabină, tobogan, piață) și o zi pe coasta de vest, la Porto Moniz și Ponta do Pargo.</li>
-          <li>🌦️ Zilele 10 și 16 decembrie sunt libere/tampon, pentru vreme sau trasee recuperate.</li>
+          <li>🎂 Pe 10 decembrie e ziua lui Matei, iar Matei alege programul. 16 decembrie e zi tampon, pentru vreme sau trasee recuperate.</li>
         </ul>
         <p className="mt-3 text-xs text-stone-500">
           Orele sunt {TRIP.timezoneLabel}. Sursa: {TRIP.source}.

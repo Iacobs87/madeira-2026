@@ -1,7 +1,7 @@
-import { days, places, TRIP } from "@/data/itinerary";
-import type { Category, Day, DayKind, Item, Place } from "./types";
+import { days, flights, places, TRIP } from "@/data/itinerary";
+import type { Category, Day, DayKind, Flight, Item, Place } from "./types";
 
-export { days, places, TRIP };
+export { days, flights, places, TRIP };
 
 export const CATEGORY: Record<Category, { label: string; icon: string; cls: string; color: string }> = {
   drumetie: { label: "Drumeții & levade", icon: "🥾", cls: "bg-laurel-100 text-laurel-900 ring-laurel-200", color: "#2f6b45" },
@@ -63,4 +63,32 @@ export function verificationItems() {
 /** Which days (and activities) use a given place. */
 export function usesOfPlace(placeId: string) {
   return days.flatMap((d) => d.items.filter((i) => i.placeIds?.includes(placeId)).map((i) => ({ day: d, item: i })));
+}
+
+// ---- Flights ----
+
+const toUtc = (local: string, offset: number) => {
+  const [d, t] = local.split("T");
+  const [y, m, day] = d.split("-").map(Number);
+  const [h, min] = t.split(":").map(Number);
+  return Date.UTC(y, m - 1, day, h, min) - offset * 3_600_000;
+};
+const hm = (mins: number) => `${Math.floor(mins / 60)} h ${String(mins % 60).padStart(2, "0")} min`;
+
+/** Real flight time, accounting for the time zone change. */
+export const flightDuration = (f: Flight) => hm((toUtc(f.arrival, f.to.utcOffset) - toUtc(f.departure, f.from.utcOffset)) / 60_000);
+
+/** Time on the ground between two consecutive flights (same airport, same zone). */
+export const layover = (a: Flight, b: Flight) => hm((toUtc(b.departure, b.from.utcOffset) - toUtc(a.arrival, a.to.utcOffset)) / 60_000);
+
+export const flightById = (id: string) => flights.find((f) => f.id === id);
+export const clock = (local: string) => local.split("T")[1];
+export const dateOf = (local: string) => local.split("T")[0];
+export const utcLabel = (offset: number) => (offset === 0 ? "UTC" : `UTC+${offset}`);
+
+export function statusLinks(f: Flight) {
+  const links = [{ label: "Flightradar24", url: `https://www.flightradar24.com/data/flights/${f.number.toLowerCase()}` }];
+  if (f.flightAware) links.push({ label: "FlightAware", url: `https://www.flightaware.com/live/flight/${f.flightAware}` });
+  links.push({ label: "Google", url: `https://www.google.com/search?q=${encodeURIComponent(`${f.number} flight status`)}` });
+  return links;
 }
