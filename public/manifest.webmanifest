@@ -1,0 +1,11 @@
+{
+  "name": "Madeira · decembrie 2026",
+  "short_name": "Madeira 2026",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f8f6",
+  "theme_color": "#0c2c42",
+  "lang": "ro",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

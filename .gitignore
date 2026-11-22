@@ -1,0 +1,10 @@
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+.env*
+.DS_Store
+
+# Excel sursă — nu se publică în repo-ul public
+*.xlsx
