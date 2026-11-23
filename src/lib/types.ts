@@ -29,6 +29,8 @@ export interface Item {
   mapsQuery?: string;
   /** Ids of geocoded places (see `places`). */
   placeIds?: string[];
+  /** Official trail page (Visit Madeira) and the key facts copied from it. */
+  trail?: { url: string; facts: string };
   /** Id of a flight in `flights`: the timeline shows its details and status links. */
   flightId?: string;
 }

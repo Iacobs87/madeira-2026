@@ -157,6 +157,8 @@ export const places: Place[] = [
   { id: "cristo-rei", name: "Cristo Rei (Garajau)", lat: 32.6385635, lng: -16.8506765 },
 ];
 
+const VM_HIKING = "https://visitmadeira.com/en/what-to-do/nature-seekers/activities/hiking/";
+
 const TRAIL_CHECK = "Verificați starea traseului (deschis/închis) și taxa pe site-urile oficiale înainte de plecare.";
 
 export const days: Day[] = [
@@ -237,19 +239,26 @@ export const days: Day[] = [
         duration: "6–8 ore",
         price: "4,5 EUR/persoană (notă din Excel)",
         notes: [TRAIL_CHECK],
+        trail: { url: VM_HIKING + "pr-13-vereda-do-fanal/", facts: "10,8 km · 4 h · moderat · start/final: ER209 Assobiadores / ER209 Fanal · 1130–1420 m" },
         mapsQuery: "PR13 Vereda do Fanal Madeira",
         placeIds: ["fanal"],
       },
       {
         id: "d07-b",
-        title: "„PR8 Leva do Rocha Vermelha”",
+        title: "PR28 Levada da Rocha Vermelha",
         category: "drumetie",
         alternative: "B",
         duration: "8–9 ore",
-        notes: ["Notă Excel: „Nu găsim momentan de cumpărat”.", TRAIL_CHECK],
-        needsVerification:
-          "Denumirea și numărul traseului sunt neclare: PR8 apare și pe 8 decembrie pentru Ponta de São Lourenço. Biletul nu a putut fi cumpărat.",
-        mapsQuery: "Rocha Vermelha Madeira levada",
+        notes: [
+          "În Excel apare „PR8 Leva do Rocha Vermelha”; pe Visit Madeira traseul este PR28 Levada da Rocha Vermelha.",
+          "Pornește tot de la Fanal (ER209), ca varianta A.",
+          "Notă Excel: „Nu găsim momentan de cumpărat”.",
+          TRAIL_CHECK,
+        ],
+        needsVerification: "Biletul pentru traseu nu a putut fi cumpărat (notă din Excel).",
+        trail: { url: VM_HIKING + "pr-28-levada-da-rocha-vermelha/", facts: "10,8 km · 4 h · start/final: Fanal (ER209) / Casa dos Guardas de Canal · 837–1297 m" },
+        mapsQuery: "PR28 Levada da Rocha Vermelha",
+        placeIds: ["fanal"],
       },
     ],
   },
@@ -268,6 +277,7 @@ export const days: Day[] = [
         duration: "aprox. 4–5 ore",
         price: "4,5 EUR/persoană (notă din Excel)",
         notes: [TRAIL_CHECK],
+        trail: { url: VM_HIKING + "pr-8-vereda-da-ponta-de-sao-lourenco/", facts: "4 km dus + 4 km întors · 2:30 h · moderat · start/final: Baía d'Abra / Casa do Sardinha · 23–126 m" },
         mapsQuery: "PR8 Vereda da Ponta de São Lourenço",
       },
       { id: "d08-masa", title: "Masă", category: "masa" },
@@ -295,7 +305,7 @@ export const days: Day[] = [
         category: "drumetie",
         duration: "aprox. 1 oră",
         price: "gratuit (notă din Excel)",
-        notes: [TRAIL_CHECK],
+        notes: ["PR23 nu apare în lista de trasee de pe Visit Madeira.", TRAIL_CHECK],
         mapsQuery: "PR23 Levada da Azenha",
         placeIds: ["azenha"],
       },
@@ -408,6 +418,7 @@ export const days: Day[] = [
         category: "drumetie",
         duration: "4 ore",
         notes: [TRAIL_CHECK],
+        trail: { url: VM_HIKING + "pr-18-levada-do-rei/", facts: "5,3 km (10,6 km dus-întors) · 3:30 h · moderat · start/final: São Jorge (stația de epurare) / Ribeiro Bonito · 535–573 m" },
         mapsQuery: "PR18 Levada do Rei",
         placeIds: ["levada-rei"],
       },
@@ -436,10 +447,11 @@ export const days: Day[] = [
     items: [
       {
         id: "d12-pr1",
-        title: "„PR1 Ruivo Arieiro”",
+        title: "PR1 Vereda do Areeiro (Pico do Arieiro → Pico Ruivo)",
         category: "drumetie",
-        notes: ["Formularea din Excel.", TRAIL_CHECK],
-        needsVerification: "De verificat ruta exactă, accesul și starea traseului PR1.",
+        notes: ["În Excel: „PR1 Ruivo Arieiro”.", TRAIL_CHECK],
+        trail: { url: VM_HIKING + "pr-1-vereda-do-areeiro/", facts: "6,1 km · 3 h · moderat · start/final: Miradouro Pico do Areeiro / Pico Ruivo · 1491–1857 m" },
+
         mapsQuery: "PR1 Pico do Arieiro Pico Ruivo",
         placeIds: ["arieiro", "ruivo"],
       },
@@ -460,9 +472,11 @@ export const days: Day[] = [
     items: [
       {
         id: "d13-pr9",
-        title: "PR9 Caldeirão Verde",
+        title: "PR9 Levada do Caldeirão Verde",
         category: "drumetie",
         notes: [TRAIL_CHECK],
+        trail: { url: VM_HIKING + "pr-9-levada-do-caldeirao-verde/", facts: "8,7 km (17,4 km dus-întors) · 6:30 h · moderat · start/final: Parcul Forestier Queimadas / Caldeirão do Inferno · 872–1020 m" },
+
         mapsQuery: "PR9 Levada do Caldeirão Verde",
         placeIds: ["queimadas"],
       },
@@ -506,9 +520,13 @@ export const days: Day[] = [
         id: "d15-pr6",
         title: "PR6 – „să vedem o levada”",
         category: "drumetie",
-        notes: [TRAIL_CHECK],
+        notes: [
+          "Variante din aceeași familie, pe Visit Madeira: PR6.1 Levada do Risco, PR6.2 Levada do Alecrim, PR6.3 Vereda da Lagoa do Vento, PR6.4 Levada Velha do Rabaçal, PR6.5 Vereda do Pico Fernandes, PR6.6 Vereda do Túnel do Cavalo, PR6.8 Levada do Paul II.",
+          TRAIL_CHECK,
+        ],
         needsVerification: "Traseul sau varianta exactă PR6 nu e decisă.",
-        mapsQuery: "PR6 levada Madeira",
+        trail: { url: VM_HIKING + "pr-6-levada-das-25-fontes/", facts: "PR6 Levada das 25 Fontes: 4,3 km (8,6 km dus-întors) · 3 h · moderat · start/final: Rabaçal (ER105) / 25 Fontes · 964–1288 m" },
+        mapsQuery: "PR6 Levada das 25 Fontes",
       },
     ],
   },
@@ -636,5 +654,9 @@ export const officialLinks = [
   },
   { label: "SIMplifica — portalul Guvernului Regional (taxe trasee)", url: "https://simplifica.madeira.gov.pt/" },
   { label: "IPMA — prognoza meteo Madeira", url: "https://www.ipma.pt/pt/otempo/prev.localidade.hora/#Madeira&Funchal" },
-  { label: "Visit Madeira — site-ul oficial de turism", url: "https://visitmadeira.com/" },
+  { label: "Visit Madeira — toate traseele pedestre (fișe)", url: VM_HIKING },
+  {
+    label: "Visit Madeira — aviz pentru drumeți: trasee deschise / închise",
+    url: "https://visitmadeira.com/en/what-to-do/nature-seekers/notice-to-walkers-and-list-of-walks/",
+  },
 ];

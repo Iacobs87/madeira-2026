@@ -67,6 +67,12 @@
 - Firma: Centauro Rent a Car; biroul „Madeira Airport” e în afara aeroportului, coordonate 32.6665513, -16.8034045 (link Google Maps de la utilizator). De la terminal se ajunge cu shuttle-ul Centauro.
 - Această informație înlocuiește neclaritatea „ridicare mașini” 6 vs. 8 decembrie din Excel.
 
+## Trasee — Visit Madeira (actualizare 23.11.2026)
+- „PR8 Leva do Rocha Vermelha” din Excel (7 dec., varianta B) este pe Visit Madeira **PR28 Levada da Rocha Vermelha** (start la Fanal, ER209).
+- „PR1 Ruivo Arieiro” = PR1 Vereda do Areeiro (Pico do Arieiro → Pico Ruivo).
+- PR23 Levada da Azenha nu apare în lista Visit Madeira.
+- Fișe: https://visitmadeira.com/en/what-to-do/nature-seekers/activities/hiking/ · stare trasee: https://visitmadeira.com/en/what-to-do/nature-seekers/notice-to-walkers-and-list-of-walks/
+
 ## Cazare (actualizare 23.11.2026)
 - Vila Venusta by An Island Apart, Arco da Calheta (Calheta), coordonate 32.7100461, -17.1412418 (link Google Maps de la utilizator). Presupus pentru toată excursia, 6–17 decembrie.
 

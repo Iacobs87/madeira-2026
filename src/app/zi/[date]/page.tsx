@@ -106,8 +106,11 @@ export default async function DayPage({ params }: { params: Promise<{ date: stri
         <div className="mt-6">
           <Note tone="warn">
             <strong>Înainte de traseu:</strong> verificați dacă e deschis și ce taxă are —{" "}
-            <ExtLink href={officialLinks[0].url}>IFCN, trasee pedestre</ExtLink> și{" "}
-            <ExtLink href={officialLinks[2].url}>prognoza IPMA</ExtLink>. Acest site nu știe starea actuală a traseelor.
+            <ExtLink href={officialLinks.find((l) => l.url.includes("notice-to-walkers"))!.url}>
+              Visit Madeira, trasee deschise / închise
+            </ExtLink>
+            , <ExtLink href={officialLinks[0].url}>IFCN</ExtLink> și <ExtLink href={officialLinks[2].url}>prognoza IPMA</ExtLink>. Acest
+            site nu știe starea actuală a traseelor.
           </Note>
         </div>
       )}
@@ -182,6 +185,17 @@ function TimelineItem({ item }: { item: Item }) {
             <li key={n}>{n}</li>
           ))}
         </ul>
+      )}
+
+      {item.trail && (
+        <div className="mt-2 rounded-lg bg-laurel-50 px-3 py-2 text-sm text-laurel-900">
+          <p>
+            <span aria-hidden>📋</span> <strong>Visit Madeira:</strong> {item.trail.facts}
+          </p>
+          <ExtLink href={item.trail.url} className="text-xs">
+            Fișa oficială a traseului (descriere, hartă, cum ajungi)
+          </ExtLink>
+        </div>
       )}
 
       {flight && (
