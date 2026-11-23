@@ -60,10 +60,6 @@ export function verificationItems() {
   return days.flatMap((d) => d.items.filter((i) => i.needsVerification).map((i) => ({ day: d, item: i })));
 }
 
-/** Which days (and activities) use a given place. */
-export function usesOfPlace(placeId: string) {
-  return days.flatMap((d) => d.items.filter((i) => i.placeIds?.includes(placeId)).map((i) => ({ day: d, item: i })));
-}
 
 // ---- Flights ----
 

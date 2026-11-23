@@ -1,7 +1,7 @@
 // Offline support: pages are network-first (fresh when online, cached copy when offline),
 // hashed build assets are cache-first. Map tiles from other origins are not cached.
-const CACHE = "madeira2026-v2";
-const ROUTES = ["", "itinerar/", "zboruri/", "harta/", "optionale/", "de-verificat/", "print/", "zi/2026-12-06/", "zi/2026-12-07/", "zi/2026-12-08/", "zi/2026-12-09/", "zi/2026-12-10/", "zi/2026-12-11/", "zi/2026-12-12/", "zi/2026-12-13/", "zi/2026-12-14/", "zi/2026-12-15/", "zi/2026-12-16/", "zi/2026-12-17/"];
+const CACHE = "madeira2026-v3";
+const ROUTES = ["", "itinerar/", "zboruri/", "print/", "zi/2026-12-06/", "zi/2026-12-07/", "zi/2026-12-08/", "zi/2026-12-09/", "zi/2026-12-10/", "zi/2026-12-11/", "zi/2026-12-12/", "zi/2026-12-13/", "zi/2026-12-14/", "zi/2026-12-15/", "zi/2026-12-16/", "zi/2026-12-17/"];
 
 self.addEventListener("install", (event) => {
   self.skipWaiting();

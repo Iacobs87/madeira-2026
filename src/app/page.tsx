@@ -51,9 +51,7 @@ export default function Home() {
         </div>
         <div className="flex flex-wrap gap-x-4 gap-y-1">
           <MapsLink query={TRIP.stay.mapsQuery} />
-          <Link href={`/harta/#${TRIP.stay.placeId}`} className="text-xs text-ocean-700 underline underline-offset-2">
-            🗺️ Pe harta excursiei
-          </Link>
+
         </div>
       </Card>
 
@@ -68,17 +66,16 @@ export default function Home() {
 
       <div className="mt-10 grid gap-3 md:grid-cols-2">
         <Card>
-          <h2 className="font-display text-lg font-semibold text-ocean-900">💡 Opționale</h2>
+          <h2 id="optionale" className="scroll-mt-28 font-display text-lg font-semibold text-ocean-900">💡 Opționale</h2>
           <ul className="mt-2 space-y-1 text-sm">
             {optionals.map((o) => (
               <li key={o.id}>
-                {CATEGORY[o.category].icon} {o.title} <span className="text-stone-500">— fără zi alocată</span>
+                {CATEGORY[o.category].icon} {o.title} <span className="text-stone-500">— fără zi alocată</span>{" "}
+                <MapsLink query={o.mapsQuery} label="Maps" />
               </li>
             ))}
           </ul>
-          <Link href="/optionale/" className="mt-2 inline-block text-sm text-ocean-700 underline underline-offset-2">
-            Vezi opționalele
-          </Link>
+
         </Card>
         <Card>
           <h2 className="font-display text-lg font-semibold text-ocean-900">🔗 Surse oficiale</h2>
@@ -94,10 +91,8 @@ export default function Home() {
 
       <div className="mt-6">
         <Note tone="warn">
-          <strong>Traseele nu sunt garantate deschise.</strong> Verificați starea fiecărui traseu PR pe site-ul IFCN cu 1–2 zile înainte.{" "}
-          <Link href="/de-verificat/" className="underline underline-offset-2">
-            Lista completă de verificat
-          </Link>
+          <strong>Traseele nu sunt garantate deschise.</strong> Verificați starea fiecărui traseu PR cu 1–2 zile înainte, pe{" "}
+          <ExtLink href={officialLinks.find((l) => l.url.includes("notice-to-walkers"))!.url}>Visit Madeira</ExtLink>.
         </Note>
       </div>
     </>

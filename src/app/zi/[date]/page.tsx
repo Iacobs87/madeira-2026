@@ -5,7 +5,7 @@ import { DayStrip } from "@/components/DayStrip";
 import { FlightStatusBadge, StatusLinks } from "@/components/FlightCard";
 import { CategoryBadge, ExtLink, MapsLink, Note, VerifyBadge } from "@/components/ui";
 import { officialLinks } from "@/data/itinerary";
-import { CATEGORY, cabinSummary, dayHref, dayNumber, days, flightById, formatDate, KIND, placeById, timeLabel, TRIP } from "@/lib/trip";
+import { CATEGORY, cabinSummary, dayHref, dayNumber, days, flightById, formatDate, KIND, mapsSearch, timeLabel, TRIP } from "@/lib/trip";
 import type { Item } from "@/lib/types";
 
 export const dynamicParams = false;
@@ -46,9 +46,7 @@ export default async function DayPage({ params }: { params: Promise<{ date: stri
         {day.summary && <p className="mt-2 max-w-2xl text-stone-600">{day.summary}</p>}
         <p className="mt-2 text-sm text-stone-600">
           🏠 {day.date === days[days.length - 1].date ? "Check-out de la" : "Cazare:"}{" "}
-          <Link href={`/harta/#${TRIP.stay.placeId}`} className="text-ocean-700 underline underline-offset-2">
-            {TRIP.stay.short}
-          </Link>{" "}
+          <ExtLink href={mapsSearch(TRIP.stay.mapsQuery)}>{TRIP.stay.short}</ExtLink>{" "}
           <span className="text-stone-500">({TRIP.stay.area})</span>
         </p>
       </header>
@@ -70,8 +68,8 @@ export default async function DayPage({ params }: { params: Promise<{ date: stri
             <p className="mt-2 font-medium text-ocean-900">Nicio activitate planificată în Excel.</p>
             <p className="mt-1 text-sm text-stone-600">
               Zi bună pentru odihnă, vreme proastă sau un traseu amânat. Vedeți și{" "}
-              <Link href="/optionale/" className="text-ocean-700 underline underline-offset-2">
-                opționalele
+              <Link href="/#optionale" className="text-ocean-700 underline underline-offset-2">
+                ideile opționale
               </Link>
               .
             </p>
@@ -144,7 +142,6 @@ export default async function DayPage({ params }: { params: Promise<{ date: stri
 
 function TimelineItem({ item }: { item: Item }) {
   const t = timeLabel(item);
-  const pinned = (item.placeIds ?? []).map(placeById).filter((p) => p !== undefined);
   const flight = item.flightId ? flightById(item.flightId) : undefined;
   return (
     <article
@@ -217,14 +214,9 @@ function TimelineItem({ item }: { item: Item }) {
         </p>
       )}
 
-      {(item.mapsQuery || pinned.length > 0) && (
-        <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1">
-          {item.mapsQuery && <MapsLink query={item.mapsQuery} label="Caută în Google Maps" />}
-          {pinned.length > 0 && (
-            <Link href={`/harta/#${pinned[0].id}`} className="text-xs text-ocean-700 underline underline-offset-2">
-              🗺️ Pe harta excursiei
-            </Link>
-          )}
+      {item.mapsQuery && (
+        <div className="mt-3">
+          <MapsLink query={item.mapsQuery} label="Caută în Google Maps" />
         </div>
       )}
     </article>
