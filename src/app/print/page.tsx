@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { generalChecks, optionals } from "@/data/itinerary";
+import { baggage, generalChecks, optionals } from "@/data/itinerary";
 import { CATEGORY, clock, dateOf, dayNumber, days, flightDuration, flights, formatDate, timeLabel, TRIP } from "@/lib/trip";
 import { PrintButton } from "./PrintButton";
 
@@ -40,6 +40,14 @@ export default function Print() {
           ))}
         </tbody>
       </table>
+
+      {baggage.map((a) => (
+        <p key={a.id} className="mt-1 text-stone-700">
+          <strong>Bagaje {a.group}:</strong>{" "}
+          {a.bags.map((b) => `${b.label.toLowerCase()} ${b.piecesPerPerson}×${b.maxKg} kg, max. ${b.maxLinearCm} cm (L+l+h)`).join(" · ")}
+          {" "}/ persoană, pe toate zborurile.
+        </p>
+      ))}
 
       <h2 className="mt-4 border-b pb-1 text-lg font-semibold">Program</h2>
       {days.map((d) => (

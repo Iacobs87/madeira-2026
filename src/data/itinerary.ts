@@ -5,12 +5,28 @@
  * Reguli: ordinea activităților e cea din Excel; orele apar doar unde există în sursă;
  * nimic nu e marcat ca rezervat; prețurile sunt notițe din Excel, nu tarife actuale.
  */
-import type { Airport, Day, Flight, OptionalIdea, Place, VerifyItem } from "@/lib/types";
+import type { Airport, BaggageAllowance, Day, Flight, OptionalIdea, Place, VerifyItem } from "@/lib/types";
 
 const OTP: Airport = { code: "OTP", city: "București", utcOffset: 2 };
 const FRA: Airport = { code: "FRA", city: "Frankfurt", utcOffset: 1 };
 const FNC: Airport = { code: "FNC", city: "Funchal", utcOffset: 0 };
 const ZRH: Airport = { code: "ZRH", city: "Zürich", utcOffset: 1 };
+
+/** Bagaje incluse în bilet, dus și întors (informație de la utilizator, 23.11.2026). */
+export const baggage: BaggageAllowance[] = [
+  {
+    id: "fete",
+    group: "Fete",
+    flightIds: ["lh1423", "lh4410", "lx8265", "lx1886"],
+    bags: [
+      { kind: "cabina", label: "Bagaj de cabină", piecesPerPerson: 1, maxKg: 8, maxLinearCm: 118 },
+      { kind: "cala", label: "Bagaj de cală", piecesPerPerson: 1, maxKg: 23, maxLinearCm: 158 },
+    ],
+    notes: [
+      "Biletul nu precizează separat un obiect personal suplimentar (rucsac mic sau geantă). Verificați cu Lufthansa/SWISS înainte dacă vreți să luați unul pe lângă bagajul de cabină.",
+    ],
+  },
+];
 
 /** Confirmate de utilizator (22.11.2026). Toate orele sunt locale. */
 export const flights: Flight[] = [

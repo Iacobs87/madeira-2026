@@ -1,7 +1,7 @@
-import { days, flights, places, TRIP } from "@/data/itinerary";
+import { baggage, days, flights, places, TRIP } from "@/data/itinerary";
 import type { Category, Day, DayKind, Flight, Item, Place } from "./types";
 
-export { days, flights, places, TRIP };
+export { baggage, days, flights, places, TRIP };
 
 export const CATEGORY: Record<Category, { label: string; icon: string; cls: string; color: string }> = {
   drumetie: { label: "Drumeții & levade", icon: "🥾", cls: "bg-laurel-100 text-laurel-900 ring-laurel-200", color: "#2f6b45" },
@@ -92,3 +92,7 @@ export function statusLinks(f: Flight) {
   links.push({ label: "Google", url: `https://www.google.com/search?q=${encodeURIComponent(`${f.number} flight status`)}` });
   return links;
 }
+
+/** Door-to-door air time from the first departure to the last arrival of a direction. */
+export const journeyTime = (legs: Flight[]) =>
+  hm((toUtc(legs[legs.length - 1].arrival, legs[legs.length - 1].to.utcOffset) - toUtc(legs[0].departure, legs[0].from.utcOffset)) / 60_000);

@@ -57,6 +57,24 @@ export interface Flight {
   flightAware?: string;
 }
 
+export interface BagLimit {
+  kind: "cabina" | "cala";
+  label: string;
+  piecesPerPerson: number;
+  maxKg: number;
+  /** Length + width + height. */
+  maxLinearCm: number;
+}
+
+export interface BaggageAllowance {
+  id: string;
+  /** Who it applies to. */
+  group: string;
+  flightIds: string[];
+  bags: BagLimit[];
+  notes: string[];
+}
+
 export type DayKind = "normal" | "alternative" | "liber" | "tampon" | "sosire" | "plecare";
 
 export interface Day {
