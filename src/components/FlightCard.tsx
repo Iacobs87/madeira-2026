@@ -1,5 +1,5 @@
 import { ExtLink } from "@/components/ui";
-import { clock, dateOf, flightDuration, formatDate, statusLinks, utcLabel } from "@/lib/trip";
+import { baggage, cabinSummary, clock, dateOf, flightDuration, formatDate, statusLinks, utcLabel } from "@/lib/trip";
 import type { Flight } from "@/lib/types";
 
 export function FlightStatusBadge({ status }: { status: Flight["status"] }) {
@@ -70,7 +70,14 @@ export function FlightCard({ flight: f }: { flight: Flight }) {
         </div>
       </div>
       <div className="flex flex-wrap items-center justify-between gap-2 border-t border-stone-100 px-4 py-2">
-        <p className="text-xs text-stone-600">Clasă: {f.cabin}</p>
+        <p className="text-xs text-stone-600">
+          Clasă: {cabinSummary(f)}
+          {baggage
+            .filter((g) => g.seatFlightIds.includes(f.id))
+            .map((g) => (
+              <span key={g.id}> · 💺 locuri rezervate: {g.group.toLowerCase()}</span>
+            ))}
+        </p>
         <StatusLinks flight={f} />
       </div>
     </article>

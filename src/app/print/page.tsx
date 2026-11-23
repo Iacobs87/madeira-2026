@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { baggage, generalChecks, optionals } from "@/data/itinerary";
-import { CATEGORY, clock, dateOf, dayNumber, days, flightDuration, flights, formatDate, timeLabel, TRIP } from "@/lib/trip";
+import { CATEGORY, cabinSummary, clock, dateOf, dayNumber, days, flightDuration, flights, formatDate, timeLabel, TRIP } from "@/lib/trip";
 import { PrintButton } from "./PrintButton";
 
 export const metadata: Metadata = { title: "Itinerar printabil" };
@@ -29,7 +29,7 @@ export default function Print() {
                 {f.from.city} ({f.from.code}) → {f.to.city} ({f.to.code})
                 <span className="block text-stone-500">
                   {f.airline}
-                  {f.operatedBy && `, operat de ${f.operatedBy}`} · {f.cabin}
+                  {f.operatedBy && `, operat de ${f.operatedBy}`} · {cabinSummary(f)}
                 </span>
               </td>
               <td className="py-1 whitespace-nowrap tabular-nums">
@@ -45,7 +45,8 @@ export default function Print() {
         <p key={a.id} className="mt-1 text-stone-700">
           <strong>Bagaje {a.group}:</strong>{" "}
           {a.bags.map((b) => `${b.label.toLowerCase()} ${b.piecesPerPerson}×${b.maxKg} kg, max. ${b.maxLinearCm} cm (L+l+h)`).join(" · ")}
-          {" "}/ persoană, pe toate zborurile.
+          {!a.bags.some((b) => b.kind === "cala") && " · fără bagaj de cală"}
+          {" "}/ persoană ({a.fare}), pe toate zborurile.
         </p>
       ))}
 

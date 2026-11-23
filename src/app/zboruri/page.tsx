@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { FlightCard } from "@/components/FlightCard";
-import { Card, DayRef, Note, PageTitle, SectionTitle } from "@/components/ui";
-import { baggage, clock, dateOf, flights, formatDate, journeyTime, layover } from "@/lib/trip";
+import { Card, DayRef, ExtLink, Note, PageTitle, SectionTitle } from "@/components/ui";
+import { baggage, clock, dateOf, flights, formatDate, journeyTime, layover, ticketNotes } from "@/lib/trip";
+import { eur } from "@/lib/money";
 import type { Flight } from "@/lib/types";
 import { BagChecker } from "./BagChecker";
 
@@ -26,6 +27,7 @@ export default function Zboruri() {
           ["#dus", "✈️ Dus"],
           ["#intors", "✈️ Întors"],
           ["#bagaje", "🧳 Bagaje"],
+          ["#check-in", "✅ Check-in"],
         ].map(([href, label]) => (
           <a key={href} href={href} className="rounded-full border border-stone-300 bg-white px-3 py-1.5 hover:border-ocean-500">
             {label}
@@ -43,50 +45,94 @@ export default function Zboruri() {
         </Note>
       </div>
 
-      <SectionTitle id="bagaje">🧳 Bagaje incluse</SectionTitle>
-      {baggage.map((a) => (
-        <div key={a.id} className="space-y-3">
-          <p className="text-sm text-stone-600">
-            Pentru <strong className="text-ocean-900">{a.group}</strong>, dus și întors, pe toate zborurile:{" "}
-            {a.flightIds
-              .map((id) => flights.find((f) => f.id === id)?.number)
-              .filter(Boolean)
-              .join(", ")}
-            .
-          </p>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {a.bags.map((b) => (
-              <Card key={b.kind}>
-                <p className="text-2xl" aria-hidden>
-                  {b.kind === "cabina" ? "🎒" : "🧳"}
-                </p>
-                <h3 className="mt-1 font-display text-lg font-semibold text-ocean-900">{b.label}</h3>
-                <dl className="mt-2 grid grid-cols-3 gap-2 text-center">
-                  <Fact label="Bucăți / pers." value={String(b.piecesPerPerson)} />
-                  <Fact label="Greutate max." value={`${b.maxKg} kg`} />
-                  <Fact label="L + l + h max." value={`${b.maxLinearCm} cm`} />
-                </dl>
-              </Card>
+      <SectionTitle id="bagaje">🧳 Bagaje și tarife, pe grupe</SectionTitle>
+      <p className="-mt-1 mb-3 text-sm text-stone-600">Din biletele SWISS. Valabil pe toate cele 4 zboruri, dus și întors.</p>
+      <div className="grid gap-3 lg:grid-cols-2">
+        {baggage.map((a) => (
+          <Card key={a.id}>
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 className="font-display text-xl font-semibold text-ocean-900">{a.group}</h3>
+              <span className="rounded-full bg-ocean-50 px-2.5 py-0.5 text-xs font-medium text-ocean-800">{a.fare}</span>
+            </div>
+            <p className="text-sm text-stone-600">{a.members.join(", ")}</p>
+            <div className="mt-3 space-y-2">
+              {a.bags.map((b) => (
+                <div key={b.kind} className="flex items-center gap-3 rounded-xl bg-mist-100 px-3 py-2">
+                  <span className="text-2xl" aria-hidden>
+                    {b.kind === "cabina" ? "🎒" : "🧳"}
+                  </span>
+                  <div className="text-sm">
+                    <p className="font-medium text-ocean-900">
+                      {b.piecesPerPerson} × {b.label.toLowerCase()}
+                    </p>
+                    <p className="tabular-nums text-stone-600">
+                      max. {b.maxKg} kg · max. {b.maxLinearCm} cm (L + l + h)
+                    </p>
+                  </div>
+                </div>
+              ))}
+              {!a.bags.some((b) => b.kind === "cala") && (
+                <div className="flex items-center gap-3 rounded-xl bg-rose-50 px-3 py-2 text-sm text-rose-900">
+                  <span className="text-2xl" aria-hidden>
+                    🚫
+                  </span>
+                  <p className="font-medium">Fără bagaj de cală inclus</p>
+                </div>
+              )}
+            </div>
+            <dl className="mt-3 grid grid-cols-2 gap-x-3 gap-y-1 text-sm">
+              <dt className="text-stone-500">Preț bilet</dt>
+              <dd className="text-right font-medium tabular-nums">{eur(a.pricePerPerson)} / pers.</dd>
+              <dt className="text-stone-500">Locuri rezervate</dt>
+              <dd className="text-right">
+                {a.seatFlightIds.length
+                  ? a.seatFlightIds.map((id) => flights.find((f) => f.id === id)?.number).join(", ")
+                  : "nu"}
+              </dd>
+            </dl>
+            {a.notes.map((n) => (
+              <p key={n} className="mt-2 text-sm text-stone-600">
+                {n}
+              </p>
             ))}
-          </div>
-          {a.notes.map((n) => (
-            <Note key={n} tone="warn">
-              {n}
-            </Note>
-          ))}
-          <BagChecker limits={a.bags} />
-        </div>
-      ))}
-    </>
-  );
-}
+          </Card>
+        ))}
+      </div>
 
-function Fact({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded-xl bg-mist-100 px-2 py-2">
-      <dd className="text-lg font-semibold tabular-nums text-ocean-900">{value}</dd>
-      <dt className="text-[11px] text-stone-600">{label}</dt>
-    </div>
+      <div className="mt-3 space-y-2">
+        {ticketNotes.map((n) => (
+          <Note key={n} tone={n.includes("obiect personal") ? "warn" : "info"}>
+            {n}
+          </Note>
+        ))}
+      </div>
+
+      <div className="mt-3">
+        <BagChecker
+          limits={baggage
+            .flatMap((a) => a.bags)
+            .filter((b, i, all) => all.findIndex((x) => x.kind === b.kind) === i)
+            .map((b) => (b.kind === "cala" ? { ...b, label: "Bagaj de cală (doar fete)" } : b))}
+        />
+      </div>
+
+      <SectionTitle id="check-in">Check-in și bilete</SectionTitle>
+      <Card>
+        <ul className="space-y-1.5 text-sm">
+          <li>
+            ✅ Check-in online: <ExtLink href="https://www.swiss.com/webcheckin">swiss.com/webcheckin</ExtLink>
+          </li>
+          <li>
+            ⚠️ Ce nu aveți voie în bagaje: <ExtLink href="https://www.swiss.com/dangerousgoods">swiss.com/dangerousgoods</ExtLink>
+          </li>
+          <li>☎️ SWISS Service Center, din România: +40 21 655 07 19</li>
+          <li>
+            📄 Biletele electronice (PDF) nu sunt pe acest site, pentru că site-ul e public, iar codul de rezervare plus numele ajung
+            ca să modifice rezervarea. Le găsiți în emailul de la SWISS sau în dosarul comun al grupului.
+          </li>
+        </ul>
+      </Card>
+    </>
   );
 }
 

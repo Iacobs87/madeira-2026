@@ -8,3 +8,6 @@ next-env.d.ts
 
 # Excel sursă — nu se publică în repo-ul public
 *.xlsx
+
+# Bilete / documente personale — nu se publică
+*.pdf

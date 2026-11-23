@@ -50,7 +50,8 @@ export interface Flight {
   /** Local times, "YYYY-MM-DDTHH:MM". */
   departure: string;
   arrival: string;
-  cabin: string;
+  /** Travel class per traveller group (fares differ between groups). */
+  cabins: Record<string, string>;
   status: "Confirmat";
   direction: "dus" | "intors";
   /** ICAO designator for FlightAware, only when it resolves there. */
@@ -66,12 +67,19 @@ export interface BagLimit {
   maxLinearCm: number;
 }
 
+/** Travellers who share the same fare (one booking). No surnames, ticket or booking numbers here: the repo is public. */
 export interface BaggageAllowance {
   id: string;
   /** Who it applies to. */
   group: string;
+  members: string[];
+  fare: string;
+  /** Ticket price per person, EUR, from the receipt. */
+  pricePerPerson: number;
   flightIds: string[];
   bags: BagLimit[];
+  /** Flights with a pre-reserved seat. */
+  seatFlightIds: string[];
   notes: string[];
 }
 

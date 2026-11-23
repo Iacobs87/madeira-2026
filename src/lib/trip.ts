@@ -1,7 +1,7 @@
-import { baggage, days, flights, places, TRIP } from "@/data/itinerary";
+import { baggage, days, flights, places, ticketNotes, TRIP } from "@/data/itinerary";
 import type { Category, Day, DayKind, Flight, Item, Place } from "./types";
 
-export { baggage, days, flights, places, TRIP };
+export { baggage, days, flights, places, ticketNotes, TRIP };
 
 export const CATEGORY: Record<Category, { label: string; icon: string; cls: string; color: string }> = {
   drumetie: { label: "Drumeții & levade", icon: "🥾", cls: "bg-laurel-100 text-laurel-900 ring-laurel-200", color: "#2f6b45" },
@@ -80,6 +80,9 @@ export const flightDuration = (f: Flight) => hm((toUtc(f.arrival, f.to.utcOffset
 
 /** Time on the ground between two consecutive flights (same airport, same zone). */
 export const layover = (a: Flight, b: Flight) => hm((toUtc(b.departure, b.from.utcOffset) - toUtc(a.arrival, a.to.utcOffset)) / 60_000);
+
+export const groupLabel = (id: string) => baggage.find((b) => b.id === id)?.group ?? id;
+export const cabinSummary = (f: Flight) => Object.entries(f.cabins).map(([g, c]) => `${groupLabel(g)}: ${c}`).join(" · ");
 
 export const flightById = (id: string) => flights.find((f) => f.id === id);
 export const clock = (local: string) => local.split("T")[1];

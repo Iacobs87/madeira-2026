@@ -73,7 +73,11 @@ Toate orele sunt locale. Toate zborurile sunt confirmate.
 - 6 dec.: LH4410 Frankfurt FRA 11:05 → Funchal FNC 14:20, operat de Discover Airlines, Economy Classic (S).
 - 17 dec.: LX8265 Funchal FNC 11:45 → Zürich ZRH 16:50, operat de Edelweiss Air, Economy Classic (S). Escală Zürich 5 h 05 min.
 - 17 dec.: LX1886 Zürich ZRH 21:55 → București OTP 01:15 (18 dec.), SWISS, Economy (S).
-- Bagaje incluse pentru fete (actualizare 23.11.2026), dus și întors, pe toate cele 4 zboruri: 1 bagaj de cabină/persoană, max. 8 kg și 118 cm (L+l+h); 1 bagaj de cală/persoană, max. 23 kg și 158 cm (L+l+h). Biletul nu precizează separat un obiect personal suplimentar.
+- Bagaje și tarife (din biletele SWISS, 23.11.2026), pe toate cele 4 zboruri:
+  - Fete (Mihaela, Andreea, Mădălina), Economy Classic, 458,90 EUR/pers.: 1 bagaj de cabină max. 8 kg / 118 cm și 1 bagaj de cală max. 23 kg / 158 cm (L+l+h); locuri rezervate pe LH1423, LH4410, LX1886.
+  - Băieți (Vasile, Alexandru, Matei), Economy Light, 398,90 EUR/pers.: doar 1 bagaj de cabină max. 8 kg / 118 cm; fără bagaj de cală.
+  - Pe biletele de dus scrie „Not valid before/after 08 December” deși zborurile sunt pe 6 decembrie — de confirmat cu SWISS.
+  - Biletele PDF NU se pun în repo: conțin coduri de rezervare și date personale.
 - Acestea înlocuiesc transcrierea ambiguă a zborurilor de retur din Excel.
 
 ## Idei suplimentare din coloanele laterale ale foii

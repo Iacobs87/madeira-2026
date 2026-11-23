@@ -5,7 +5,7 @@ import { DayStrip } from "@/components/DayStrip";
 import { FlightStatusBadge, StatusLinks } from "@/components/FlightCard";
 import { CategoryBadge, ExtLink, MapsLink, Note, VerifyBadge } from "@/components/ui";
 import { officialLinks } from "@/data/itinerary";
-import { CATEGORY, dayHref, dayNumber, days, flightById, formatDate, KIND, placeById, timeLabel, TRIP } from "@/lib/trip";
+import { CATEGORY, cabinSummary, dayHref, dayNumber, days, flightById, formatDate, KIND, placeById, timeLabel, TRIP } from "@/lib/trip";
 import type { Item } from "@/lib/types";
 
 export const dynamicParams = false;
@@ -181,7 +181,7 @@ function TimelineItem({ item }: { item: Item }) {
         <div className="mt-2 space-y-1">
           <p className="text-sm text-stone-600">
             {flight.airline}
-            {flight.operatedBy && ` · operat de ${flight.operatedBy}`} · {flight.cabin} ·{" "}
+            {flight.operatedBy && ` · operat de ${flight.operatedBy}`} · {cabinSummary(flight)} ·{" "}
             <Link href={`/zboruri/#${flight.id}`} className="text-ocean-700 underline underline-offset-2">
               detalii zbor
             </Link>

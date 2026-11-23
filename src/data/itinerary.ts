@@ -12,20 +12,43 @@ const FRA: Airport = { code: "FRA", city: "Frankfurt", utcOffset: 1 };
 const FNC: Airport = { code: "FNC", city: "Funchal", utcOffset: 0 };
 const ZRH: Airport = { code: "ZRH", city: "Zürich", utcOffset: 1 };
 
-/** Bagaje incluse în bilet, dus și întors (informație de la utilizator, 23.11.2026). */
+/**
+ * Bagaje și tarife din biletele SWISS (emise 27.03.2026), pe grupe de călători.
+ * Fără nume de familie, coduri de rezervare sau numere de bilet: repo-ul e public.
+ */
 export const baggage: BaggageAllowance[] = [
   {
     id: "fete",
     group: "Fete",
+    members: ["Mihaela", "Andreea", "Mădălina"],
+    fare: "Economy Classic",
+    pricePerPerson: 458.9,
     flightIds: ["lh1423", "lh4410", "lx8265", "lx1886"],
     bags: [
       { kind: "cabina", label: "Bagaj de cabină", piecesPerPerson: 1, maxKg: 8, maxLinearCm: 118 },
       { kind: "cala", label: "Bagaj de cală", piecesPerPerson: 1, maxKg: 23, maxLinearCm: 158 },
     ],
-    notes: [
-      "Biletul nu precizează separat un obiect personal suplimentar (rucsac mic sau geantă). Verificați cu Lufthansa/SWISS înainte dacă vreți să luați unul pe lângă bagajul de cabină.",
-    ],
+    seatFlightIds: ["lh1423", "lh4410", "lx1886"],
+    notes: [],
   },
+  {
+    id: "baieti",
+    group: "Băieți",
+    members: ["Vasile", "Alexandru", "Matei"],
+    fare: "Economy Light",
+    pricePerPerson: 398.9,
+    flightIds: ["lh1423", "lh4410", "lx8265", "lx1886"],
+    bags: [{ kind: "cabina", label: "Bagaj de cabină", piecesPerPerson: 1, maxKg: 8, maxLinearCm: 118 }],
+    seatFlightIds: [],
+    notes: ["Fără bagaj de cală inclus (0 bucăți) pe niciun zbor. Un bagaj de cală se plătește separat, dacă e nevoie."],
+  },
+];
+
+/** Note valabile pentru toți, din biletele SWISS. */
+export const ticketNotes = [
+  "Biletul nu precizează separat un obiect personal suplimentar (rucsac mic sau geantă). Verificați cu Lufthansa/SWISS înainte dacă vreți să luați unul pe lângă bagajul de cabină.",
+  "Lichidele din bagajul de cabină: recipiente de maximum 100 ml fiecare.",
+  "Tariful e valabil doar dacă zborurile sunt folosite în ordinea rezervată.",
 ];
 
 /** Confirmate de utilizator (22.11.2026). Toate orele sunt locale. */
@@ -38,7 +61,7 @@ export const flights: Flight[] = [
     to: FRA,
     departure: "2026-12-06T05:55",
     arrival: "2026-12-06T07:30",
-    cabin: "Economy (S)",
+    cabins: { fete: "Economy (S)", baieti: "Economy (S)" },
     status: "Confirmat",
     direction: "dus",
     flightAware: "DLH1423",
@@ -52,7 +75,7 @@ export const flights: Flight[] = [
     to: FNC,
     departure: "2026-12-06T11:05",
     arrival: "2026-12-06T14:20",
-    cabin: "Economy Classic (S)",
+    cabins: { fete: "Economy Classic (S)", baieti: "Economy Light (S)" },
     status: "Confirmat",
     direction: "dus",
   },
@@ -65,7 +88,7 @@ export const flights: Flight[] = [
     to: ZRH,
     departure: "2026-12-17T11:45",
     arrival: "2026-12-17T16:50",
-    cabin: "Economy Classic (S)",
+    cabins: { fete: "Economy Classic (S)", baieti: "Economy Light (S)" },
     status: "Confirmat",
     direction: "intors",
   },
@@ -77,7 +100,7 @@ export const flights: Flight[] = [
     to: OTP,
     departure: "2026-12-17T21:55",
     arrival: "2026-12-18T01:15",
-    cabin: "Economy (S)",
+    cabins: { fete: "Economy (S)", baieti: "Economy (S)" },
     status: "Confirmat",
     direction: "intors",
     flightAware: "SWR1886",
@@ -567,6 +590,12 @@ export const generalChecks: VerifyItem[] = [
     label: "Predarea mașinii 2",
     detail: "Mașina 1: 6 dec. 15:30 → 8 dec. 14:30, mașina 2: din 8 dec. 15:30, ambele la biroul Centauro „Madeira Airport” (Gaula). Rămâne de stabilit ora și locul predării mașinii 2 pe 17 decembrie.",
     date: "2026-12-17",
+  },
+  {
+    id: "g-bilet-validitate",
+    label: "Valabilitatea biletelor la dus",
+    detail: "Pe toate cele 6 bilete, la zborurile din 6 decembrie (LH1423 și LH4410), scrie „Not valid before / after: 08 December”, deși zborurile sunt pe 6 decembrie. Poate fi o urmă a unei schimbări de program. Cereți confirmare la SWISS (Service Center București: +40 21 655 07 19) că biletele sunt valabile pentru 6 decembrie.",
+    date: "2026-12-06",
   },
   {
     id: "g-vreme",
