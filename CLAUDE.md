@@ -29,7 +29,7 @@ Date structurate în `src/data/itinerary.ts` sau JSON, cu `date`, `title`, `item
 - 10 decembrie: ziua lui Matei; Matei decide programul (fără activități predefinite).
 - 16 decembrie: zi tampon.
 - Zboruri (confirmate 22.11.2026): LH1423 + LH4410 pe 6 dec. via Frankfurt; LX8265 + LX1886 pe 17 dec. via Zürich, sosire OTP 18 dec. 01:15. Vezi `madeira-itinerary.md`.
-- Mașini (clarificat 22.11.2026): mașina 1 preluată 6 dec. 15:30, predată 8 dec. 14:30; mașina 2 preluată 8 dec. 15:30 — toate la Madeira Airport. Predarea mașinii 2 pe 17 dec. rămâne de stabilit.
+- Mașini (clarificat 22.11.2026): mașina 1 preluată 6 dec. 15:30, predată 8 dec. 14:30; mașina 2 preluată 8 dec. 15:30 — toate la Madeira Airport. Predarea mașinii 2 pe 17 dec. tot la biroul Centauro; ora rămâne de stabilit.
 - Prețurile 4,5 EUR sunt note din Excel, nu tarife actuale garantate.
 - Nu pretinde că biletele sau activitățile sunt rezervate.
 

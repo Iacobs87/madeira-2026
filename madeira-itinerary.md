@@ -59,7 +59,7 @@
 
 ## 17 decembrie — Valley of the Nuns și plecare
 - Valley of the Nuns (Curral das Freiras).
-- Predare mașina 2 (ora și locul nu sunt încă stabilite).
+- Predare mașina 2 — la același birou Centauro (Gaula), apoi shuttle Centauro la terminal; ora nu e încă stabilită.
 - **Zboruri — transcriere brută, ordinea celulelor din Excel este ambiguă:** rândul 71: „RETUR MASINI | 11:45 | ZURICH | 16:50”; rândul 72: „FUNCHAL | 21:55 | BUCURESTI | 01:15”; rândul 73: „ZURICH”. **Nu afișa un itinerar aerian cert** până la confirmarea segmentelor și a zilei de sosire.
 
 ## Actualizare 22 noiembrie 2026 — mașini

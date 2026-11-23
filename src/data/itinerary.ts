@@ -576,9 +576,15 @@ export const days: Day[] = [
       },
       {
         id: "d17-predare2",
-        title: "Predare mașina 2",
+        title: "Predare mașina 2 — Centauro Rent a Car",
         category: "transport",
-        needsVerification: "Ora și locul predării mașinii 2 nu sunt încă stabilite. Trebuie să fie înainte de zborul de la 11:45.",
+        notes: [
+          "La același birou Centauro din Gaula (Santa Cruz) de unde ați luat mașinile, nu la terminal.",
+          "De acolo până la terminal mergeți cu shuttle-ul Centauro.",
+        ],
+        needsVerification: "Ora predării nu e stabilită. Trebuie să fie destul de devreme cât să prindeți shuttle-ul și zborul de la 11:45.",
+        mapsQuery: "Centauro Rent a Car Madeira",
+        placeIds: ["centauro"],
       },
       {
         id: "d17-zbor3",
@@ -643,7 +649,7 @@ export const generalChecks: VerifyItem[] = [
   {
     id: "g-masini",
     label: "Predarea mașinii 2",
-    detail: "Mașina 1: 6 dec. 15:30 → 8 dec. 14:30, mașina 2: din 8 dec. 15:30, ambele la biroul Centauro „Madeira Airport” (Gaula). Rămâne de stabilit ora și locul predării mașinii 2 pe 17 decembrie.",
+    detail: "Mașina 1: 6 dec. 15:30 → 8 dec. 14:30; mașina 2: 8 dec. 15:30 → 17 dec., toate la biroul Centauro „Madeira Airport” (Gaula). Rămâne de stabilit ora predării pe 17 decembrie, înainte de zborul de la 11:45.",
     date: "2026-12-17",
   },
   {
