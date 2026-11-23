@@ -3,15 +3,14 @@ import { DayCard } from "@/components/DayCard";
 import { HeroArt } from "@/components/Hero";
 import { TripStatus } from "@/components/TripStatus";
 import { Card, ExtLink, Note, SectionTitle } from "@/components/ui";
-import { generalChecks, officialLinks, optionals } from "@/data/itinerary";
-import { CATEGORY, days, formatDate, TRIP, verificationItems } from "@/lib/trip";
+import { officialLinks, optionals } from "@/data/itinerary";
+import { CATEGORY, days, formatDate, TRIP } from "@/lib/trip";
 
 export default function Home() {
   const all = days.flatMap((d) => d.items);
   const hikes = all.filter((i) => i.category === "drumetie" && /^„?PR/.test(i.title) && i.alternative !== "B").length;
   const viewpoints = all.filter((i) => i.category === "viewpoint").length;
   const flexible = days.filter((d) => d.flexible).length;
-  const toVerify = verificationItems().length + generalChecks.length;
   const nights = days.length - 1;
 
   return (
@@ -33,11 +32,10 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <div className="mt-6 grid grid-cols-3 gap-2 sm:gap-3">
         <Stat label="Trasee PR planificate" value={hikes} hint="7 dec. numărat o dată (A sau B)" />
         <Stat label="Viewpoint-uri" value={viewpoints} hint="plus opționale" />
         <Stat label="Zile flexibile" value={flexible} hint="10, 15 și 16 dec." />
-        <Stat label="De verificat" value={toVerify} hint="înainte de plecare" warn />
       </div>
 
       <SectionTitle>Cele {days.length} zile</SectionTitle>
@@ -87,11 +85,11 @@ export default function Home() {
   );
 }
 
-function Stat({ label, value, hint, warn }: { label: string; value: number; hint: string; warn?: boolean }) {
+function Stat({ label, value, hint }: { label: string; value: number; hint: string }) {
   return (
     <Card className="p-3 sm:p-4">
       <p className="text-xs text-stone-500">{label}</p>
-      <p className={`mt-0.5 text-3xl font-semibold tabular-nums ${warn ? "text-amber-700" : "text-ocean-900"}`}>{value}</p>
+      <p className="mt-0.5 text-3xl font-semibold tabular-nums text-ocean-900">{value}</p>
       <p className="text-xs text-stone-500">{hint}</p>
     </Card>
   );
