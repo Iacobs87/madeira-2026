@@ -2,10 +2,11 @@
 import "leaflet/dist/leaflet.css";
 import { useEffect, useRef, useState } from "react";
 import { optionals } from "@/data/itinerary";
-import { CATEGORY, dayNumber, days, dayOfMonth, places, usesOfPlace } from "@/lib/trip";
+import { CATEGORY, dayNumber, days, dayOfMonth, places, TRIP, usesOfPlace } from "@/lib/trip";
 import type { Category } from "@/lib/types";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const STAY = TRIP.stay.placeId;
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
 
 function categoryOf(placeId: string): Category {
@@ -37,6 +38,19 @@ export function TripMap() {
       }).addTo(map);
 
       for (const p of places) {
+        if (p.id === STAY) {
+          const icon = L.divIcon({
+            className: "",
+            html: `<div style="background:#c95a18;border:2px solid #fff;border-radius:10px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:17px;box-shadow:0 1px 5px rgba(0,0,0,.4)">🏠</div>`,
+            iconSize: [32, 32],
+            iconAnchor: [16, 16],
+          });
+          const m = L.marker([p.lat, p.lng], { icon, title: TRIP.stay.name, keyboard: true, zIndexOffset: 1000 })
+            .bindPopup(`<strong>🏠 ${esc(TRIP.stay.name)}</strong><br>Cazarea, 6–17 decembrie<br>${esc(TRIP.stay.area)}`)
+            .addTo(map);
+          markersRef.current.set(p.id, m);
+          continue;
+        }
         const cat = categoryOf(p.id);
         const dates = datesOf(p.id);
         const label = dates.length ? dates.map(dayOfMonth).join(", ") : "★";
@@ -85,10 +99,10 @@ export function TripMap() {
       for (const p of places) {
         const m = markersRef.current.get(p.id);
         if (!m) continue;
-        const show = day === "all" || datesOf(p.id).includes(day);
+        const show = day === "all" || p.id === STAY || datesOf(p.id).includes(day);
         if (show) {
           m.addTo(map);
-          visible.push([p.lat, p.lng]);
+          if (p.id !== STAY) visible.push([p.lat, p.lng]);
         } else m.remove();
       }
       if (day === "all") fitAll(map, L);
@@ -97,7 +111,7 @@ export function TripMap() {
     })();
   }, [day]);
 
-  const daysWithPins = days.filter((d) => places.some((p) => datesOf(p.id).includes(d.date)));
+  const daysWithPins = days.filter((d) => places.some((p) => p.id !== STAY && datesOf(p.id).includes(d.date)));
   const emptyDay = day !== "all" && !daysWithPins.some((d) => d.date === day);
 
   return (
@@ -130,7 +144,7 @@ export function TripMap() {
             {CATEGORY[c].label}
           </li>
         ))}
-        <li>Cifra din pin = ziua din decembrie · ★ = opțional</li>
+        <li>🏠 = cazarea · cifra din pin = ziua din decembrie · ★ = opțional</li>
       </ul>
     </div>
   );

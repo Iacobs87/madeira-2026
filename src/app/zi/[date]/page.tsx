@@ -44,6 +44,13 @@ export default async function DayPage({ params }: { params: Promise<{ date: stri
           {day.flexible && <span className="rounded-full bg-stone-100 px-2.5 py-0.5 text-xs text-stone-700">Zi flexibilă</span>}
         </div>
         {day.summary && <p className="mt-2 max-w-2xl text-stone-600">{day.summary}</p>}
+        <p className="mt-2 text-sm text-stone-600">
+          🏠 {day.date === days[days.length - 1].date ? "Check-out de la" : "Cazare:"}{" "}
+          <Link href={`/harta/#${TRIP.stay.placeId}`} className="text-ocean-700 underline underline-offset-2">
+            {TRIP.stay.short}
+          </Link>{" "}
+          <span className="text-stone-500">({TRIP.stay.area})</span>
+        </p>
       </header>
 
       {day.notes && day.notes.length > 0 && (

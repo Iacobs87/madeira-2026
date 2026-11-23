@@ -67,6 +67,9 @@
 - Firma: Centauro Rent a Car; biroul „Madeira Airport” e în afara aeroportului, coordonate 32.6665513, -16.8034045 (link Google Maps de la utilizator). De la terminal se ajunge cu shuttle-ul Centauro.
 - Această informație înlocuiește neclaritatea „ridicare mașini” 6 vs. 8 decembrie din Excel.
 
+## Cazare (actualizare 23.11.2026)
+- Vila Venusta by An Island Apart, Arco da Calheta (Calheta), coordonate 32.7100461, -17.1412418 (link Google Maps de la utilizator). Presupus pentru toată excursia, 6–17 decembrie.
+
 ## Zboruri — confirmate (actualizare 22 noiembrie 2026)
 Toate orele sunt locale. Toate zborurile sunt confirmate.
 - 6 dec.: LH1423 București OTP 05:55 → Frankfurt FRA 07:30, Lufthansa, Economy (S). Escală Frankfurt 3 h 35 min.

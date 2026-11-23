@@ -17,6 +17,9 @@ export default function Print() {
       <p className="text-stone-600">
         {days.length} zile · orele sunt {TRIP.timezoneLabel} · sursa: {TRIP.source}
       </p>
+      <p className="mt-1">
+        <strong>Cazare:</strong> {TRIP.stay.name}, {TRIP.stay.area} (6–17 decembrie)
+      </p>
 
       <h2 className="mt-4 border-b pb-1 text-lg font-semibold">Zboruri (confirmate)</h2>
       <table className="mt-1 w-full">

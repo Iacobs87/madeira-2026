@@ -115,6 +115,14 @@ export const TRIP = {
   timezone: "Atlantic/Madeira",
   timezoneLabel: "ora Madeirei (WET, UTC+0 în decembrie)",
   source: "Madeira - program.xlsx · foaia „itinerar madeira”",
+  /** Cazarea pentru toată excursia (link Google Maps de la utilizator, 23.11.2026). */
+  stay: {
+    name: "Vila Venusta by An Island Apart",
+    short: "Vila Venusta",
+    area: "Arco da Calheta, Calheta",
+    placeId: "cazare",
+    mapsQuery: "Vila Venusta by An Island Apart",
+  },
 };
 
 /**
@@ -123,6 +131,8 @@ export const TRIP = {
  */
 export const places: Place[] = [
   { id: "airport", name: "Aeroportul Madeira (Funchal)", lat: 32.6989623, lng: -16.7730306 },
+  // Din linkul Google Maps trimis de utilizator.
+  { id: "cazare", name: "Vila Venusta by An Island Apart (cazare)", lat: 32.7100461, lng: -17.1412418 },
   // Din linkul Google Maps trimis de utilizator (biroul „Madeira Airport” al Centauro, în afara aeroportului).
   { id: "centauro", name: "Centauro Rent a Car Madeira", lat: 32.6665513, lng: -16.8034045 },
   { id: "fanal", name: "Fanal", lat: 32.809398, lng: -17.1407318, approx: "zona Fanal (Porto Moniz)" },
@@ -201,7 +211,14 @@ export const days: Day[] = [
         mapsQuery: "Centauro Rent a Car Madeira",
         placeIds: ["centauro"],
       },
-      { id: "d06-cazare", title: "Transfer la cazare", category: "transport" },
+      {
+        id: "d06-cazare",
+        title: "Transfer la cazare — Vila Venusta",
+        category: "transport",
+        notes: ["Vila Venusta by An Island Apart, în Arco da Calheta (sud-vestul insulei)."],
+        mapsQuery: "Vila Venusta by An Island Apart",
+        placeIds: ["cazare"],
+      },
       { id: "d06-cumparaturi", title: "Cumpărături", category: "activitate" },
     ],
   },
@@ -242,7 +259,7 @@ export const days: Day[] = [
     kind: "normal",
     summary: "Capătul estic al insulei, schimbul mașinii la aeroport, apoi o levada scurtă.",
     items: [
-      { id: "d08-plecare", title: "Plecare de la cazare", category: "transport", startTime: "07:00" },
+      { id: "d08-plecare", title: "Plecare de la cazare (Vila Venusta)", category: "transport", startTime: "07:00", placeIds: ["cazare"] },
       {
         id: "d08-pr8",
         title: "PR8 Ponta de São Lourenço",
@@ -353,7 +370,7 @@ export const days: Day[] = [
     kind: "normal",
     summary: "Nordul insulei: urcare, cafea cu priveliște, PR18 și Santana.",
     items: [
-      { id: "d11-plecare", title: "Plecare de la cazare", category: "transport", startTime: "07:00" },
+      { id: "d11-plecare", title: "Plecare de la cazare (Vila Venusta)", category: "transport", startTime: "07:00", placeIds: ["cazare"] },
       {
         id: "d11-entarosa",
         title: "Caminho da Entarosa",
@@ -510,8 +527,16 @@ export const days: Day[] = [
     summary: "Curral das Freiras, predarea mașinii 2, zborurile spre casă (via Zürich).",
     notes: [
       "Zborul spre Zürich pleacă la 11:45. Curral das Freiras și predarea mașinii trebuie să încapă dimineața devreme, înainte de aeroport. Altfel, Curral das Freiras se poate muta pe 16 decembrie (zi tampon).",
+      "Cazarea e în Arco da Calheta, la circa 35 km în linie dreaptă de aeroport, în celălalt capăt al coastei de sud.",
     ],
     items: [
+      {
+        id: "d17-checkout",
+        title: "Check-out de la Vila Venusta",
+        category: "transport",
+        mapsQuery: "Vila Venusta by An Island Apart",
+        placeIds: ["cazare"],
+      },
       {
         id: "d17-curral",
         title: "Valley of the Nuns (Curral das Freiras)",

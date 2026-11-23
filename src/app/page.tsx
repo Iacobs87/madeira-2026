@@ -2,7 +2,7 @@ import Link from "next/link";
 import { DayCard } from "@/components/DayCard";
 import { HeroArt } from "@/components/Hero";
 import { TripStatus } from "@/components/TripStatus";
-import { Card, ExtLink, Note, SectionTitle } from "@/components/ui";
+import { Card, ExtLink, MapsLink, Note, SectionTitle } from "@/components/ui";
 import { officialLinks, optionals } from "@/data/itinerary";
 import { CATEGORY, days, formatDate, TRIP } from "@/lib/trip";
 
@@ -37,6 +37,25 @@ export default function Home() {
         <Stat label="Viewpoint-uri" value={viewpoints} hint="plus opționale" />
         <Stat label="Zile flexibile" value={flexible} hint="10, 15 și 16 dec." />
       </div>
+
+      <Card className="mt-3 flex flex-wrap items-center justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-flame-100 text-2xl" aria-hidden>
+            🏠
+          </span>
+          <div>
+            <p className="text-xs text-stone-500">Cazare · {nights} nopți, 6–17 decembrie</p>
+            <p className="font-semibold text-ocean-900">{TRIP.stay.name}</p>
+            <p className="text-sm text-stone-600">{TRIP.stay.area}</p>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-x-4 gap-y-1">
+          <MapsLink query={TRIP.stay.mapsQuery} />
+          <Link href={`/harta/#${TRIP.stay.placeId}`} className="text-xs text-ocean-700 underline underline-offset-2">
+            🗺️ Pe harta excursiei
+          </Link>
+        </div>
+      </Card>
 
       <SectionTitle>Cele {days.length} zile</SectionTitle>
       <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
