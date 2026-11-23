@@ -71,6 +71,8 @@
 - „PR8 Leva do Rocha Vermelha” din Excel (7 dec., varianta B) este pe Visit Madeira **PR28 Levada da Rocha Vermelha** (start la Fanal, ER209).
 - „PR1 Ruivo Arieiro” = PR1 Vereda do Areeiro (Pico do Arieiro → Pico Ruivo).
 - PR23 Levada da Azenha nu apare în lista Visit Madeira.
+- Taxe (Visit Madeira, 23.11.2026): 4,50 €/pers. peste 12 ani la PR13, PR28, PR8, PR18, PR9 (+ parcare Queimadas 2 €/oră), PR6; PR1: 4,50 € (Areeiro–Pedra Rija dus-întors) sau 10,50 € (Areeiro→Pico Ruivo, sens unic). Plata pe SIMplifica.
+- Stare la 23.11.2026: PR28 apare închis (CLOSED); PR1 accesibil doar până la Miradouro Pedra Rija (km 1,2). Restul traseelor din plan: deschise.
 - Fișe: https://visitmadeira.com/en/what-to-do/nature-seekers/activities/hiking/ · stare trasee: https://visitmadeira.com/en/what-to-do/nature-seekers/notice-to-walkers-and-list-of-walks/
 
 ## Cazare (actualizare 23.11.2026)
