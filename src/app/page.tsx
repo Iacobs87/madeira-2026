@@ -40,25 +40,6 @@ export default function Home() {
         <Stat label="De verificat" value={toVerify} hint="înainte de plecare" warn />
       </div>
 
-      <SectionTitle>Pe scurt</SectionTitle>
-      <Card>
-        <ul className="grid gap-2 text-sm sm:grid-cols-2">
-          <li>
-            ✈️ Dus pe 6 decembrie via Frankfurt (LH1423 + LH4410), întors pe 17 decembrie via Zürich (LX8265 + LX1886). Toate zborurile sunt{" "}
-            <strong>confirmate</strong>.{" "}
-            <Link href="/zboruri/" className="text-ocean-700 underline underline-offset-2">
-              Detalii și status
-            </Link>
-          </li>
-          <li>🥾 Levade și trasee PR în fiecare colț al insulei: Fanal, Ponta de São Lourenço, Levada do Rei, PR1, Caldeirão Verde, PR6.</li>
-          <li>🏘️ O zi în Funchal (Monte, telecabină, tobogan, piață) și o zi pe coasta de vest, la Porto Moniz și Ponta do Pargo.</li>
-          <li>🎂 Pe 10 decembrie e ziua lui Matei, iar Matei alege programul. 16 decembrie e zi tampon, pentru vreme sau trasee recuperate.</li>
-        </ul>
-        <p className="mt-3 text-xs text-stone-500">
-          Orele sunt {TRIP.timezoneLabel}. Sursa: {TRIP.source}.
-        </p>
-      </Card>
-
       <SectionTitle>Cele {days.length} zile</SectionTitle>
       <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {days.map((d) => (
